@@ -152,17 +152,25 @@ header{
     font-size: 110%;
     text-transform: uppercase;
 }
-.loginbtn a {
+#loginbtn a {
     position:absolute;
     margin: 0;
     text-decoration-line: none;
     right: 10%;
-    top: 10%;
+    top: 5%;
     border: none;
-    padding: 30px;
+    padding: 13px;
     color: #ffffff;
     font-size: 110%;
     text-transform: uppercase;
+}
+.navbar{
+    margin: 0;
+    padding-left: 70px;
+    top: 40%;
+    opacity: 50%;
+    background-image:linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
+
 }
 ul{
     list-style-type: none ;
