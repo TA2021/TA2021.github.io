@@ -11,16 +11,20 @@ html{
     font-weight: 300;
     font-size: 20px;
 }
-body{
-    
+.responsive{
     background-image: url(https://hips.hearstapps.com/hmg-prod/images/best-black-friday-clothing-deals-2023-64e630f2619e4.jpg?resize=1200:*);
     background-position: center;
-    background-size: cover;
+    background-repeat:no-repeat;
+    background-size:contain;
     max-width: 100%;
     height: auto;
+    margin-bottom: 0%;
     
     
 }
+
+  
+
 
 .row {
     max-width: 1140px;
