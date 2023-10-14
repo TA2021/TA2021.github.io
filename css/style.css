@@ -47,18 +47,30 @@ header{
     transform: translate(-10%, -10%);
     
 }
-.restname{
+.shopname{
     margin: 0;
     padding-left: 20px;
-    color: #ffffff;;
-    font-size: 400%;
-    font-weight: 300;
+    color: #ffffff;
+    font-weight: 10;
+    font-size:-1000%;
     text-transform: uppercase;
     text-decoration-line: none;
     letter-spacing: 1px;
 
 }
+.shopname{
+    @include font-size(3rem);
+  }
 
+.shopname{
+    font-size: calc(1.000rem + 3.0vw);
+  }
+  
+  @media (min-width: 600px) {
+    .shopname {
+      font-size: 2rem;
+    }
+  }
 .restnames{
     margin: 0;
     padding-left: 50px;
