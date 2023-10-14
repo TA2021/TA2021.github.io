@@ -169,16 +169,15 @@ header{
     text-transform: uppercase;
 }
 #loginbtn a {
-    position:absolute;
+    position:relative;
     margin: 0;
     text-decoration-line: none;
-    right: 10%;
-    top: 5%;
+    right: 1%;
+    top: 20%;
     border: none;
-    padding: 13px;
+    padding: 1px;
     color: #ffffff;
-    font-size: 110%;
-    text-transform: uppercase;
+    font-size: 80%;
 }
 .navbar{
     margin: 0;
