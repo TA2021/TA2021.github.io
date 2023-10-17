@@ -293,12 +293,7 @@ h1 {
     margin: 0;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
+
 
 /*@media (max-width: 768px) {
     .products {
@@ -424,6 +419,12 @@ footer {
 .getTheStatus:hover{
    opacity: 0.5;
    background: green;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
 }
 @media only screen and (max-width:813px) {
   /* For mobile phones: */
