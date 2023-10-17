@@ -11,21 +11,6 @@ html{
     font-weight: 300;
     font-size: 20px;
 }
-.responsive{
-    background-image: url(https://hips.hearstapps.com/hmg-prod/images/best-black-friday-clothing-deals-2023-64e630f2619e4.jpg?resize=1200:*);
-    background-position: center;
-    background-repeat:no-repeat;
-    background-size:contain;
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 0%;
-    
-    
-}
-
-  
-
-
 .row {
     max-width: 1140px;
     margin : 0 auto;
@@ -36,7 +21,10 @@ header{
     background-position: center;
     margin-bottom: -360px;
     height: 400px;
+    text-align: center;
+    padding: 10px;
 }
+
 .your-fashion-text-box {
     position: absolute;
     width: 100vw;
@@ -66,11 +54,7 @@ header{
     font-size: calc(1.000rem + 3.0vw);
   }
   
-  @media (min-width: 600px) {
-    .shopname {
-      font-size: 2rem;
-    }
-  }
+
 .restnames{
     margin: 0;
     padding-left: 50px;
@@ -200,12 +184,18 @@ ul li{
 }
 .container{
     width: 90%;
+    max-width: 1200px;
     opacity: 90%;
-    margin: auto;
+    margin: 0 auto;
     overflow: hidden;
     background:rgba(0, 0, 0, 0.5);
     margin-top: 500px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 .products-container{
     width: 90%;
     opacity: 90%;
@@ -249,6 +239,75 @@ ul li{
     position: relative;
     
 }
+
+/*----------------men page ----------------*/
+
+.bod{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.head{
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+h1 {
+    margin: 0;
+}
+
+
+
+.contain{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.prod{
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 45%;
+}
+
+.prod image {
+    max-width: 100%;
+}
+
+.prod .hh {
+    margin: 10px 0;
+}
+
+.prod .para {
+    margin: 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/*@media (max-width: 768px) {
+    .products {
+        width: 95%;
+    }
+}*/
+
+
+
 
 /*-----------------shopping cart------------------*/
 
@@ -366,10 +425,10 @@ ul li{
    opacity: 0.5;
    background: green;
 }
-@media only screen and (max-width:620px) {
+@media only screen and (max-width:813px) {
   /* For mobile phones: */
-  .menu, .container {
-    width:100%;
+  .menu, .container, .prod {
+    width:80%;
   }
 }
 @media screen and (max-width:1250px){
@@ -379,3 +438,4 @@ ul li{
          
     }
 }
+
