@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.cim.rhul.ac.uk/zfac125/your-fashion.git
+git remote add origin https://gitlab.cim.rhul.ac.uk/zfac125/Tim-Adams-2018-ZFAC125-100900214-FINAL-YEAR-PROJECT
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.cim.rhul.ac.uk/zfac125/your-fashion/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.cim.rhul.ac.uk/zfac125/Tim-Adams-2018-ZFAC125-100900214-FINAL-YEAR-PROJECT/-/settings/integrations)
 
 ## Collaborate with your team
 
@@ -55,15 +55,16 @@ Every project is different, so consider which of these sections apply to yours. 
 
 
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
 Building a website (online clothes shop) for customers to explore, search and buy new clothes. The website will allow staff member to add/ remove items as well as allowing managers to edit prices and apply discounts.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## Work Progress 
+From 25 - 1 Oct 23 I have read the project specifications to understand the requirements and searched for the best approach to construct the website.
+On 28 Sep had a meeting with my Supervisor and I got some advises on how to intergrade the login system and sugestions on where to deploy the website as well as other advises.
+On 2nd Oct started to build the skeleton index page with some styling.
+On 10 Oct built the Men wear skeleton page with some styling.
+On 14 Oct integrating search bar to the index.html page. 
+On 22nd Oct corrected the project name as advised.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
 ## Installation
 Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
