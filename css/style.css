@@ -74,7 +74,7 @@ header{
     margin: 2px 10;
 }
 
-.search-bar input[type="text"] {
+.search-bar input[type="search"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -101,20 +101,7 @@ header{
     text-decoration: none;
     color: #fff;
 }*/
-.nav-item {
-    background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
-}
-.nav-item ul{
-    background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
-}
-.nav-item ul.dropdown-menu {
-    background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
-}
-.nav-item ul.dropdown-menu li {
-    margin: 0;
-    background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
 
-}
 .nav-item ul.dropdown-menu li a {
     text-decoration: none;
     color: #141313;
@@ -130,7 +117,7 @@ header{
     border: none;
     border-radius: 5px;
     text-decoration: none;
-    margin-left: 1000;
+    margin-left: 550;
 }
 .login-button:hover{
     opacity: 0.5;
@@ -167,7 +154,7 @@ img {vertical-align: middle;}
   max-width: 1000px;
   position: relative;
   margin: auto;
-  margin-top:20rem;
+  margin-top:25rem;
 }
 
 /* Caption text */
@@ -208,7 +195,7 @@ img {vertical-align: middle;}
 /* Fading animation */
 .fade {
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 2s;
 }
 
 @keyframes fade {
