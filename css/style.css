@@ -92,6 +92,31 @@ header{
     opacity: 0.5;
     color: #fff;
 }
+/* dropdown menu styles */
+/*.navbar ul.navbar-nav li a {
+    text-decoration: none;
+    color: #fff;
+}*/
+.nav-item {
+    background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
+}
+.nav-item ul{
+    background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
+}
+.nav-item ul.dropdown-menu {
+    background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
+}
+.nav-item ul.dropdown-menu li {
+    margin: 0;
+    background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
+
+}
+.nav-item ul.dropdown-menu li a {
+    text-decoration: none;
+    color: #141313;
+    
+
+}
 
 /* Slideshow styles (you can customize this further) */
 .slideshow {
