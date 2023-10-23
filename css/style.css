@@ -1,19 +1,30 @@
-*{
+/* Reset some default styles */
+body, h1, h2, p {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-html{
-    background-color: #FFF;
-    color : rgb(199, 199, 199);
-    font-family : 'Lato', 'Arial', sans-serif;
-    font-weight: 300;
-    font-size: 20px;
+/* Basic page styles */
+body {
+    font-family: Arial, sans-serif;
 }
-.row {
-    max-width: 1140px;
-    margin : 0 auto;
+
+.your-fashion-text-box {
+    text-align: center;
+    text-decoration-line: none;
+    top: 3%;
+    left: 10%;
+    transform: translate(-10%, -10%);
+}
+
+.shopname{
+    margin: 0;
+    padding-left: 100px;
+    color: #ffffff;;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration-line: none;
+    letter-spacing: 1px;
 }
 header{
     background-image:linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
@@ -21,495 +32,102 @@ header{
     background-position: center;
     margin-bottom: -360px;
     height: 400px;
-    text-align: center;
-    padding: 10px;
 }
 
-.your-fashion-text-box {
-    position: absolute;
-    width: 100vw;
-    height: 10vh;
-    text-decoration-line: none;
-    top: 7%;
-    left: 10%;
-    transform: translate(-10%, -10%);
-    
-}
-.shopname{
-    margin: 0;
-    padding-left: 20px;
-    color: #ffffff;
-    font-weight: 10;
-    font-size:-1000%;
-    text-transform: uppercase;
-    text-decoration-line: none;
-    letter-spacing: 1px;
 
-}
-.shopname{
-    @include font-size(3rem);
-  }
-
-.shopname{
-    font-size: calc(1.000rem + 3.0vw);
-  }
-  
-
-.restnames{
-    margin: 0;
-    padding-left: 50px;
-    color: #ffffff;;
-    font-size: 150%;
-    font-weight: 300;
-    text-decoration-line: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
-}
-
-.desc{
-    transform: translate(1%, 0%);
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-.cart ion-icon {
-    vertical-align: bottom;
-    
-}
-.cart {
+/* Navbar styles */
+.navbar {
     background-color: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
     color: #fff;
-    cursor: pointer;
-    text-decoration: none;
-    justify-content: space-around;
-    font-size: 18px;
-    
-}
-.menu{
-    position: absolute;
-    width: 80%;
-    height: 150vh;
-    text-decoration: none;
-    top: 30%;
-    left: 10%;
-    
-}
-#notificationTable th{
-    padding:0 1em 0 0;
-}
-
-#notificationTable{
-    border: solid 2px white;
-} 
-
-.itemMenu{
-    margin: 0 0 0 -190px;
-    align-items: center;
-    justify-content: space-around;
-    color: #ffffff;;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration-line: none;
-    
-    display: inline-block;
-    
-    
-}
-
-#ordersTable{
-    border: solid 2px white;
-} 
-
-#ordersTable th{
-    padding:0 1em 0 0;
-}
-
-#statusTable{
-    border: solid 2px white;
-}
-
-#statusTable th{
-    padding:0 1em 0 0;
-}
-
-
-
-#paypal-button-container{
-    align-self: center;
-    margin-top: 10rem;
-    margin-left: 35rem;
-    width: 20%;
-}
- 
-.login {
-    position: fixed;
-    margin: 0;
-    text-decoration-line: none;
-    border: none;
-    padding: 30px;
-    color: #ffffff;
-    font-size: 110%;
-    text-transform: uppercase;
-}
-#loginbtn a {
-    position:relative;
-    margin: 0;
-    text-decoration-line: none;
-    right: 1%;
-    left: 90%;
-    top: 20%;
-    border: none;
-    padding: 1px;
-    color: #ffffff;
-    font-size: 80%;
-}
-.navbar{
-    margin: 0;
-    padding-left: 0;
-    top: 40%;
-    opacity: 50%;
-    background-image:linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
-    overflow: hidden;
-}
-/*.navbar a {
-    float: left;
-    display: block;
-    color: rgb(238, 231, 231);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }*/
-  form {
-    background-color: hsl(0, 0%, 100%);
-    width: 300px;
-    height: 44px;
-    border-radius: 5px;
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-  }
-  input {
-    all: unset;
-    font: 16px system-ui;
-    color: #fff;
-    height: 100%;
-    width: 100%;
-    padding: 6px 10px;
-  }
-  .navbar :hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-
-  .navbar .search-container {
-    float: right;
-  }
-  
-  .navbar input[type=text] {
-    padding: 3px;
-    margin-top: 4px;
-    font-size: 17px;
-    border: none;
-  }
-  
-  .navbar .sebtn {
-    float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .navbar .sebtn:hover {
-    background: #eceaea;
-  }
-  .navbar input[type=text], .navbar .sebtn {
+    padding: 10px 20px;
     float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .navbar input[type=text] {
-    border: 1px solid #ccccccf3;  
-  }
-
-  
-ul{
-    list-style-type: none ;
-    margin : 0;
-    padding : 0;
-    
-}
-ul li{
-    display: block;
-    padding-left: 2%;
-    text-align: center;
-    padding: 14px 16px;
-}
-.container{
-    width: 90%;
-    max-width: 1200px;
-    opacity: 90%;
-    margin: 0 auto;
-    overflow: hidden;
-    background:rgba(0, 0, 0, 0.5);
-    margin-top: 500px;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
-.products-container{
-    width: 90%;
-    opacity: 90%;
-    margin: auto;
-    background:rgba(0, 0, 0, 0.5);
-    margin-top: 500px;
-}
-
-.container ul{
-    padding: 0px;
-    margin: 0px;
-}
-
-
-
-.container ul li{
-    float:left;
-    list-style: none;
-    width:20%;
-    height:300px;
-    background: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3)) url(https://www.cookingclassy.com/wp-content/uploads/2018/01/guacamole-12.jpg);
-    margin :20px 0px 20px 55px; 
-    border:2px;
-    box-sizing: border-box;
-}
-.container ul li:hover{
-    opacity: 0.5;
-}
-/*.bottom{
-    width:400%;;
-    height:50px;
-    display: block;
-    transform: translate(-75%, 0%);
--ms-transform: translate(-50%, -50%);
-    line-height: 50px;
-    background: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
-    opacity: 70%;
-    text-align: center;
-    color:white;
-    font-size: 20px;
-    position: relative;
-    
-}*/
-
-/*----------------men page ----------------*/
-
-.bod{
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-.head{
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
-h1 {
-    margin: 0;
+.navbar .container-fluid {
     font-size: 24px;
 }
 
-
-
-.contain{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.navbar ul.navbar-nav {
+    list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
-.prod{
-    background-color: #fff;
-    padding: 20px;
-    margin: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    width: 45%;
+.navbar ul.navbar-nav li {
+    margin-right: 60;
 }
 
-.prod image {
-    max-width: 100%;
+.navbar ul.navbar-nav li a {
+    text-decoration: none;
+    color: #fff;
 }
-
-.prod .hh {
-    margin: 10px 0;
-}
-
-.prod .para {
-    margin: 0;
-}
-
-
-
-/*@media (max-width: 768px) {
-    .products {
-        width: 95%;
-    }
-}*/
-
-
-
-
-/*-----------------shopping cart------------------*/
-
-.products-container{
-    max-width: 700px;
-    justify-content: space-around;
-    margin: 0 auto;
-    margin-top: 500px;
-}
-.products-container ion-icon{
-    font-size: 25px;
-    color: aqua;
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-.products{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-.product-header{
-    width: 100%;
-    max-width: 650px;
-    display: flex;
-    justify-content: flex-start;
-    border-bottom: 4px solid lightgrey;
-    margin: 0 auto;
-}
-.product-title{
-    width: 45%;
-}
-
-.price{
-    width: 15%;
-    display: flex;
-    align-items: center;
-    
-    
-}
-.quantity{
-    width: 30%;
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    justify-content: flex-start;
-}
-.total{
-    width: 10%;
-    display: flex;
-    align-items: center;
-}
-.product{
-    width: 45%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid lightgrey;
-}
-
-.product img{
-    width: 75px;
-}
-.basketTotalContainer{
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 10px 0;
-}
-.basketTotalTitle{
-    width: 30%;
-}
-.basketTotal{
-    width: 10%;
-}
-.sendbtn{
-     position: flex;
-    margin: 10 0 0 950px;
-    justify-content: flex-start;
-    border: none;
-    padding: 30px;
-    color: #ffffff;
-    opacity: 60%;
-    font-size: 110%;
-    text-transform: uppercase;
-    background: red;
-}
-.sendbtn:hover{
+.navbar ul.navbar-nav li a:hover {
     opacity: 0.5;
-    background: green;
+    color: #fff;
 }
-.status-container{
-    max-width: 150px;
-    justify-content: space-around;
-    margin-left: 5%;
-    margin-top: -215px;
-    left:20%;
-    background-color: black;
-    opacity: 60%;
+/* Search bar styles */
+.search-bar {
+    text-align: center;
+    margin: 2px 10;
 }
-.getTheStatus{
-    position: flex;
-   margin: 10 0 0 950px;
-   justify-content: flex-start;
-   border: none;
-   padding: 30px;
-   color: #ffffff;
-   opacity: 60%;
-   font-size: 110%;
-   text-transform: uppercase;
-   background: blue;
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60%;
 }
-.getTheStatus:hover{
-   opacity: 0.5;
-   background: green;
-}
-footer {
+
+.search-bar button {
+    padding: 10px 20px;
     background-color: #333;
     color: #fff;
-    text-align: center;
-    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
-@media only screen and (max-width:813px) {
-  /* For mobile phones: */
-  .menu, .container, .prod, .search-container, .navbar {
-    width:80%;
-  }
-}
-@media screen and (max-width:1250px){
-    .container ul li, .search-container{
-        width:40%;
-        margin-left: 40px;
-         
-    }
+.search-bar button:hover{
+    opacity: 0.5;
+    color: #fff;
 }
 
+/* Slideshow styles (you can customize this further) */
+.slideshow {
+    /* Your slideshow styles go here */
+}
+
+/* Login button styles */
+.login-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 100;
+}
+.login-button:hover{
+    opacity: 0.5;
+    color: #ccc;
+}
+
+/* Product card styles (for the products page) */
+.item-cards {
+    /* Your product card styles go here */
+}
+
+@media only screen and (max-width:620px) {
+    /* For mobile phones: */
+    .menu, .container, .login-button, .shopname {
+      width:100%;
+    }
+  }
+  @media screen and (max-width:1250px){
+      .container ul li, .login-button{
+          width:40%;
+          margin-left: 40px;
+           
+      }
+  }
