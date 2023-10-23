@@ -68,6 +68,7 @@ header{
     color: #fff;
 }
 /* Search bar styles */
+
 .search-bar {
     text-align: center;
     margin: 2px 10;
@@ -78,20 +79,23 @@ header{
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 60%;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
 }
 
-.search-bar button {
+
+/*.search-bar button {
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    
 }
 .search-bar button:hover{
     opacity: 0.5;
     color: #fff;
-}
+}*/
 /* dropdown menu styles */
 /*.navbar ul.navbar-nav li a {
     text-decoration: none;
@@ -118,11 +122,6 @@ header{
 
 }
 
-/* Slideshow styles (you can customize this further) */
-.slideshow {
-    /* Your slideshow styles go here */
-}
-
 /* Login button styles */
 .login-button {
     padding: 10px 20px;
@@ -131,7 +130,7 @@ header{
     border: none;
     border-radius: 5px;
     text-decoration: none;
-    margin-left: 100;
+    margin-left: 1000;
 }
 .login-button:hover{
     opacity: 0.5;
@@ -168,7 +167,7 @@ img {vertical-align: middle;}
   max-width: 1000px;
   position: relative;
   margin: auto;
-  margin-top: 10%;
+  margin-top:20rem;
 }
 
 /* Caption text */
@@ -218,6 +217,6 @@ img {vertical-align: middle;}
 }
 
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
+@media only screen and (max-width: 100px) {
+  .text {font-size: 8px}
 }
