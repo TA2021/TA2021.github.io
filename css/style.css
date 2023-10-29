@@ -129,9 +129,9 @@ header{
     background-color: #333;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     text-decoration: none;
-    margin-left: 550;
+    
 }
 .login-button:hover{
     opacity: 0.5;
