@@ -67,6 +67,11 @@ header{
     opacity: 0.5;
     color: #fff;
 }
+/* Add an active class to highlight the current page */
+.navbar a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
 /* Search bar styles */
 
 .search-bar {
