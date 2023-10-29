@@ -64,7 +64,9 @@ On 2nd Oct started to build the skeleton index page with some styling.
 On 10 Oct built the Men wear skeleton page with some styling.
 On 14 Oct integrating search bar to the index.html page. 
 On 22nd Oct corrected the project name as advised.
-Today 23rd Oct I made the navigation bar and the slideshow ready and working to get the rest of the pages ready
+Today 23rd Oct I made the navigation bar and the slideshow ready and working to get the rest of the pages ready.
+27th Oct learned how to correctly style the navbar from https://www.w3schools.com/css/default.asp . 
+Oct 29th done all the html pages.
 
 
 ## Installation
