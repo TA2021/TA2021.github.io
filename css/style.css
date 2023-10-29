@@ -68,9 +68,18 @@ header{
     color: #fff;
 }
 /* Add an active class to highlight the current page */
-.navbar a.active {
-    background-color: #04AA6D;
+.active {
+    background-color:linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
     color: white;
+    padding: 10px 20px;
+    margin-right: 60;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+
+  .active:hover{
+    opacity: 0.5;
+    color: #141313;
   }
 /* Search bar styles */
 
