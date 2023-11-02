@@ -67,6 +67,7 @@ On 22nd Oct corrected the project name as advised.
 Today 23rd Oct I made the navigation bar and the slideshow ready and working to get the rest of the pages ready.
 27th Oct learned how to correctly style the navbar from https://www.w3schools.com/css/default.asp . 
 Oct 29th done all the html pages.
+Today on Nov 2nd I created the products cards and faced with styling problem so I have read about on https://www.w3schools.com/howto/howto_css_product_card.asp to learn how to solve it.
 
 
 ## Installation
