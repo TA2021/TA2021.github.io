@@ -178,7 +178,7 @@ header{
 .product .product-card .product-img {
   z-index: 1;
   position: absolute;
-  max-width: 400px;
+  max-width: 370px;
   max-height: 430px;
   top: 30%;
   left: 50%;
