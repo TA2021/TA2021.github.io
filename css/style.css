@@ -517,6 +517,14 @@ img {vertical-align: middle;}
   
 }
 
+.products-container ion-icon{
+  font-size: 25px;
+  color: blue;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
 .product-header{
   width: 100%;
   max-width: 650px;
@@ -548,11 +556,40 @@ img {vertical-align: middle;}
   align-items: center;
 }
 
-.product{
+.prod{
   width: 45%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid #5a5e5f;
+}
+
+.prod ion-icon{
+  cursor: pointer;
+}
+
+.products{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.prod img{
+  width: 75px;
+}
+
+.basketTotalContainer{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.basketTotalTitle{
+  width: 30%;
+}
+
+.basketTotal{
+  width: 10%;
 }

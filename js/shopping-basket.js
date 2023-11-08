@@ -113,9 +113,9 @@ function displayCart() {
         productContainer.innerHTML = '';
         Object.values(cartItems).map(item => {
             productContainer.innerHTML += `
-        <div class="product">
+        <div class="prod">
             <ion-icon name="close-circle-outline" class="close"></ion-icon>
-            <img src="./img/${item.tag}.jpg">
+            <img src="./images/${item.tag}.jpg">
             <span>${item.name}</span>
         </div>
         <div class="price">$${item.price},00</div>
