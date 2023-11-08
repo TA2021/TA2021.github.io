@@ -35,19 +35,20 @@ let products = [
         tag: 'Cottonjeans',
         price: 200.00,
         inCart: 0
-    },
+    }
     
 ]
 for(let i = 0; i < carts.length; i++){
     carts[i].addEventListener( 'click', () => {
-        cardsNumbers(product[i]);
+        cardsNumbers(products[i]);
+        totalCost(products[i]);
     })
 }
 
 function onLoadCardsNumbers(){
     let productNumber = localStorage.getItem('cardsNumbers');
     if(productNumber){
-        document.querySelector('.add-cart-btn span').textContent = productNumber;
+        document.querySelector('.add-cart span').textContent = productNumber;
     }
 }
 
@@ -58,10 +59,10 @@ function cardsNumbers(product){
     productNumber = parseInt(productNumber);
     if(productNumber){
         localStorage.setItem('cardsNumbers', productNumber + 1);
-        document.querySelector('.add-cart-btn span').textContent = productNumber + 1;
+        document.querySelector('.add-cart span').textContent = productNumber + 1;
     }else{
         localStorage.setItem('cardsNumbers', 1);
-        document.querySelector('.add-cart-btn span').textContent = 1;
+        document.querySelector('.add-cart span').textContent = 1;
     }
 
     setItems(product);
@@ -90,6 +91,17 @@ function setItems(product){
 
     
     localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+}
+
+function totalCost(product){
+    let cartCost = localStorage.getItem('totalCost');
+    
+    if(cartCost != null){
+        cartCost = parseInt(cartCost);
+        localStorage.setItem("totalCost", cartCost + product.price);
+    }else{
+        localStorage.setItem("totalCost", product.price);
+    }
 }
 
 onLoadCardsNumbers();

@@ -124,7 +124,7 @@ header{
 }
 
 /* Login button styles */
-.login-button, .add-cart-btn {
+.login-button, .add-cart-btn, .add-cart {
     padding: 10px 20px;
     /*background-color: #333;*/
     color: #fff;
@@ -138,6 +138,10 @@ header{
     color: #ccc;
 }
 .add-cart-btn:hover{
+  opacity: 0.5;
+  color: #ccc;
+}
+.add-cart:hover{
   opacity: 0.5;
   color: #ccc;
 }
