@@ -61,6 +61,7 @@ Today 23rd Oct I made the navigation bar and the slideshow ready and working to 
 27th Oct learned how to correctly style the navbar from https://www.w3schools.com/css/default.asp . 
 Oct 29th done all the html pages.
 Today on Nov 2nd I created the products cards and faced with styling problem so I have read about on https://www.w3schools.com/howto/howto_css_product_card.asp and https://codepen.io/Aldykusuma/pen/mdrBJbd to learn how to solve it.
+On the 8th of November I wrote the JS code for the shopping basket but I encounter an issue with loading the selected items into the shopping basket I think my approach need some improvement on how to inject HTML code into JS code.
 
 
 ## Installation
