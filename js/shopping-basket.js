@@ -56,7 +56,7 @@ function onLoadCardsNumbers(){
 function cardsNumbers(product){
     
     let productNumber = localStorage.getItem('cardsNumbers');
-    productNumber = parseInt(productNumber);
+    productNumber = parseFloat(productNumber);
     if(productNumber){
         localStorage.setItem('cardsNumbers', productNumber + 1);
         document.querySelector('.add-cart span').textContent = productNumber + 1;
@@ -97,7 +97,7 @@ function totalCost(product){
     let cartCost = localStorage.getItem('totalCost');
     
     if(cartCost != null){
-        cartCost = parseInt(cartCost);
+        cartCost = parseFloat(cartCost);
         localStorage.setItem("totalCost", cartCost + product.price);
     }else{
         localStorage.setItem("totalCost", product.price);
@@ -107,25 +107,30 @@ function totalCost(product){
 function displayCart() {
     let cartItems = localStorage.getItem("productsInCart");
     cartItems = JSON.parse(cartItems);
-    let productContainer = document.querySelector(".products");
+
+    let productContainer = document.querySelector(".prods");
     let cartCost = localStorage.getItem('totalCost');
     if (cartItems && productContainer) {
         productContainer.innerHTML = '';
         Object.values(cartItems).map(item => {
             productContainer.innerHTML += `
         <div class="prod">
-            <ion-icon name="close-circle-outline" class="close"></ion-icon>
+        <link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'>
+        <i class="gg-close-o"></i>
+            
             <img src="./images/${item.tag}.jpg">
             <span>${item.name}</span>
         </div>
-        <div class="price">$${item.price},00</div>
+        <div class="price">£${item.price}</div>
         <div class="quantity">
-            <ion-icon name="add-circle-outline" class="add"></ion-icon>
+            <link href='https://unpkg.com/css.gg@2.0.0/icons/css/add.css' rel='stylesheet'>
+            <i class="gg-add"></i>
             <span>${item.inCart}</span>
-            <ion-icon name="remove-circle-outline" class = "remove"></ion-icon>
+            <link href='https://unpkg.com/css.gg@2.0.0/icons/css/remove.css' rel='stylesheet'>
+            <i class="gg-remove"></i>
         </div>
         <div class="total">
-            $${item.inCart * item.price},00
+            £${item.inCart * item.price}
         </div>
         `;
         });
@@ -133,10 +138,10 @@ function displayCart() {
         productContainer.innerHTML += `
     <div class="basketTotalContainer">
         <h4 class="basketTotalTitle">
-            Basket Total
+             Total
         </h4>
         <h4 class="basketTotal">
-            $${cartCost},00
+            £${cartCost}
         </h4>
     </div>
     `;
@@ -145,3 +150,4 @@ function displayCart() {
 }
 
 onLoadCardsNumbers();
+displayCart();
