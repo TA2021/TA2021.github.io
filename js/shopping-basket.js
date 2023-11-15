@@ -35,6 +35,42 @@ let products = [
         tag: 'Cottonjeans',
         price: 200.00,
         inCart: 0
+    },
+    {
+        name: 'Blue blouse',
+        tag: 'Blueblouse',
+        price: 59.99,
+        inCart: 0
+    },
+    {
+        name: 'Off White blouse',
+        tag: 'OffWhiteblouse',
+        price: 73.99,
+        inCart: 0
+    },
+    {
+        name: 'White blouse',
+        tag: 'Whiteblouse',
+        price: 89.99,
+        inCart: 0
+    },
+    {
+        name: 'Brown trouser',
+        tag: 'Browntrouser',
+        price: 140.00,
+        inCart: 0
+    },
+    {
+        name: 'Cream trouser',
+        tag: 'Creamtrouser',
+        price: 59.00,
+        inCart: 0
+    },
+    {
+        name: 'Grey trouser',
+        tag: 'Greytrouser',
+        price: 201.00,
+        inCart: 0
     }
     
 ]
@@ -104,6 +140,10 @@ function totalCost(product){
     }
 }
 
+/*document.getElementsByClassName(".gg-add").addEventListener("click", () => {
+    increaseValue();
+})*/
+
 function displayCart() {
     let cartItems = localStorage.getItem("productsInCart");
     cartItems = JSON.parse(cartItems);
@@ -148,6 +188,23 @@ function displayCart() {
     }
 
 }
+
+
+
+/*function increaseValue() {
+    var value = parseInt(document.getElementsByClassName('quantity').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementsByClassName('quantity').value = value;
+  }
+  
+  function decreaseValue() {
+    var value = parseInt(document.getElementsByClassName('quantity').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    value--;
+    document.getElementsByClassName('quantity').value = value;
+  }*/
 
 onLoadCardsNumbers();
 displayCart();
