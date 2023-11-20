@@ -63,10 +63,9 @@ Oct 29th done all the html pages.
 Today on Nov 2nd I created the products cards and faced with styling problem so I have read about on https://www.w3schools.com/howto/howto_css_product_card.asp and https://codepen.io/Aldykusuma/pen/mdrBJbd to learn how to solve it.
 On the 8th of November I wrote the JS code for the shopping basket but I encounter an issue with loading the selected items into the shopping basket I think my approach need some improvement on how to inject HTML code into JS code.
 Today 14/11/2023 I have learnt and used the icon codes from https://css.gg/ where I used close, add, and remove icons in the shopping-basket.js file.
+20/11/2023 done the 3D Carousel but it has a problem with the slides size(once it moves the size is getting bigger than it suppose to be.)
 
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
