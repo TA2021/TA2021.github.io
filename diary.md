@@ -64,6 +64,8 @@ Today on Nov 2nd I created the products cards and faced with styling problem so 
 On the 8th of November I wrote the JS code for the shopping basket but I encounter an issue with loading the selected items into the shopping basket I think my approach need some improvement on how to inject HTML code into JS code.
 Today 14/11/2023 I have learnt and used the icon codes from https://css.gg/ where I used close, add, and remove icons in the shopping-basket.js file.
 20/11/2023 done the 3D Carousel but it has a problem with the slides size(once it moves the size is getting bigger than it suppose to be.)
+22/11/2023 started to implement the database using express framework but it is postponded until the payment functionality is complete.
+26/11/2023 started to do the payment functionality.
 
 
 
