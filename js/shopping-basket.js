@@ -1,5 +1,5 @@
-let carts = document.querySelectorAll('.add-cart-btn');
-let products = [
+const carts = document.querySelectorAll('.add-cart-btn');
+const products = [
     {
         name: 'Blue Shirt',
         tag: 'BlueShirt',
@@ -92,7 +92,7 @@ function onLoadCardsNumbers(){
 function cardsNumbers(product){
     
     let productNumber = localStorage.getItem('cardsNumbers');
-    productNumber = parseFloat(productNumber);
+    productNumber = parseInt(productNumber);
     if(productNumber){
         localStorage.setItem('cardsNumbers', productNumber + 1);
         document.querySelector('.add-cart span').textContent = productNumber + 1;

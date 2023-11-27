@@ -122,8 +122,11 @@ header{
 .nav-item ul.dropdown-menu li a {
     text-decoration: none;
     color: #141313;
-    
+}
 
+.nav-item ul.dropdown-menu li a:hover {
+  text-decoration: none;
+  color: #0a550a;
 }
 
 /* Login button styles */
