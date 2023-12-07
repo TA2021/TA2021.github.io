@@ -65,7 +65,7 @@ function getGooglePaymentsClient(){
     return paymentsClient;
 }
 
-function onGooglePayLoaded(){
+function onGooglePayLoaded(){// TO be checked
     const paymentsClient = getGooglePaymentsClient();
     paymentsClient.isReadyToPay(getGoogleIsReadyToPayRequest())
     .then(function(response) {
@@ -108,7 +108,7 @@ function prefetchGooglePaymentData(){
     paymentsClient.prefetchGooglePaymentData(paymentDataRequest);
 }
 
-function onGooglePaymentButtonClicked() {
+function onGooglePaymentButtonClicked() {//check this
     const paymentDataRequest = getGooglePaymentDataRequest();
     paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
   

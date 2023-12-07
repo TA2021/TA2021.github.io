@@ -66,21 +66,11 @@ Today 14/11/2023 I have learnt and used the icon codes from https://css.gg/ wher
 20/11/2023 done the 3D Carousel but it has a problem with the slides size(once it moves the size is getting bigger than it suppose to be.)
 22/11/2023 started to implement the database using express framework but it is postponded until the payment functionality is complete.
 26/11/2023 started to do the payment functionality.
+07/12/2023 Work stopped on the project's code due to emergency surgeries however the work will continue during Christmass holidays to put the project back on schedule.
 
-
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
 ## Support
 For any question please contact me on zfac125@live.rhul.ac.uk 
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
 
 ## License
 Open licence.
