@@ -1,132 +1,99 @@
+//const response = require("koa/lib/response");
 
-//declares the api versions.
-const baseRequest = {
-    apiVersion: 2,
-    apiVersionMinor: 0
-};
-
-//requests a payment token for a payment provider in this case is just a testing sample.
+/**
+ * Google Pay API Configuration
+ */
 const tokenizationSpecification = {
-    type: 'PAYMENT_GATEWAY',
-    parameters:{
-        'gateway' : 'example',
-        'gatewayMerchantId' : 'exampleGatewayMerchantId'
+    type: 'PAYMENT_GATEWAY', 
+    parameters: {
+        gateway: 'example', 
+        gatewayMerchantId: 'gatewayMerchantId',
+    }
+}
+
+
+const cardPaymentMethod = {
+    type: 'CARD' ,
+    tokenizationSpecification: tokenizationSpecification,
+    parameters: {
+        allowedCardNetworks: ['VISA', 'MASTERCARD'],
+        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
     }
 };
-
-//defines supported payment cards.
-const allowedCardNetworks = ["AMEX", "DISCOVER", "INTERAC", "JCB", "MASTERCARD", "VISA"];
-
-const allowedCardAuthMethods = ["PAN_ONLY", "CRYPTOGRAM_3DS"];
-
-//describes the allowed payment methods
-const baseCardPaymentMethod = {
-    type: 'CARD',
-    parameters: {
-      allowedAuthMethods: allowedCardAuthMethods,
-      allowedCardNetworks: allowedCardNetworks
-    }
-  };
-
-const cardPaymentMethod = Object.assign(
-    {},
-    baseCardPaymentMethod,
-    {tokenizationSpecification: tokenizationSpecification}
-    
-);
-
-let paymentsClient = null;
-
-//const paymentClient = new google.payments.api.PaymentClient({environment: 'TEST'});
-
-function getGoogleIsReadyToPayRequest(){
-    return Object.assign(
-        {},
-        baseRequest,
-        {allowedPaymentMethods: [baseCardPaymentMethod]}
-    );
+const googlePayConfiguration = {
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [cardPaymentMethod],
 }
 
-function getGooglePaymentDataRequest(){
-    const paymentDataRequest = Object.assign({}, baseRequest);
-    paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
-    paymentDataRequest.trasactionInfo = getGoogleTransactionInfo();
-    paymentDataRequest.merchantInfo = {
-        merchantName: 'Example Merchant'
-    };
-    return paymentDataRequest;
-}
+let googlePayClient;
 
-function getGooglePaymentsClient(){
-   // const paymentsClient = new onGooglePayLoaded.payments.api.paymentsClient({environment: 'TEST'});
-    if(paymentsClient === null){
-        paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
-    }
-    return paymentsClient;
-}
+/**
+ * Defines and handles the main operations related to the integration of Google Pay.
+ * This function is executed when the Google Pay library scrpit has finished loading.
+ */
 
-function onGooglePayLoaded(){// TO be checked
-    const paymentsClient = getGooglePaymentsClient();
-    paymentsClient.isReadyToPay(getGoogleIsReadyToPayRequest())
-    .then(function(response) {
-      if (response.result) {
-        addGooglePayButton();
+function onGooglePayLoaded(){
+    googlePayClient = new google.payments.api.PaymentsClient({
+        environment: 'TEST', 
+    });
+
+    googlePayClient.isReadyToPay(googlePayConfiguration)
+    .then(response => {
+        if (response.result) {
+            createAndAddButton();
+        }else{
+            //The current user cannot pay using GPay. Offer another
+            // method to pay.
         }
     })
-    .catch(function(err) {
-        // show error in developer console for debugging
-        console.error(err);
-      });
+    .catch(error => console.error('isReadyToPay error: ', error));
 }
 
-function addGooglePayButton() {
-    const paymentsClient = getGooglePaymentsClient();
-    const button =
-        paymentsClient.createButton({
-          onClick: onGooglePaymentButtonClicked,
-          allowedPaymentMethods: [baseCardPaymentMethod]
-        });
-    document.getElementById('container').appendChild(button);
-  }
 
-function getGoogleTransactionInfo(){
-    return{
-        countryCode: 'UK',
+/**
+ * Handles the creation of the button to pay with Google Pay.
+ * Once created, this button is appended to the DOM, under the element
+ * "buy-now".
+ */
+function createAndAddButton() {
+    const googlePayButton = googlePayClient.createButton({
+        onClick: onGooglePayButtonClicked,
+    });
+
+    document.getElementById('buy-now').appendChild(googlePayButton);
+}
+
+/**
+ * Handles the click of the Google Pay button.
+ * Takes care of defining the payment data request in order to load 
+ * the user payments methods available.
+ */
+function onGooglePayButtonClicked() {
+    const paymentDataRequest = { ...googlePayConfiguration };
+    paymentDataRequest.merchantInfo = {
+        merchantId: 'BCR2DN4T3G6PVU2S', 
+        merchantName: 'Your Fashion', 
+    };
+
+    paymentDataRequest.transactionInfo = {
+        totalPriceStatus: 'FINAL', 
+        totalPrice: item.inCart * item.price, //item.inCart * item.price
         currencyCode: 'GBP',
-        totalPriceStatus: 'FINAL',
-        totalPrice: '1.00' //set to cart total
+        countryCode: 'UK',
     };
+
+    googlePayClient.loadPaymentData(paymentDataRequest)
+    .then(paymentData => processPaymentData(paymentData))
+    .catch(error => console.error('loadPaymentData error: ', error));
 }
 
-function prefetchGooglePaymentData(){
-    const paymentDataRequest = getGooglePaymentDataRequest();
-    paymentDataRequest.trasactionInfo = {
-        totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-        currencyCode: 'GBP'
-    };
-    const paymentsClient = getGooglePaymentsClient();
-    paymentsClient.prefetchGooglePaymentData(paymentDataRequest);
+function processPaymentData(paymentData) {
+    fetch(orderEndpointURL, {
+        method: 'POST', 
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: paymentData
+    })
 }
-
-function onGooglePaymentButtonClicked() {//check this
-    const paymentDataRequest = getGooglePaymentDataRequest();
-    paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
-  
-    const paymentsClient = getGooglePaymentsClient();
-    paymentsClient.loadPaymentData(paymentDataRequest)
-        .then(function(paymentData) {
-          // handle the response
-          processPayment(paymentData);
-        })
-        .catch(function(err) {
-          // show error in developer console for debugging
-          console.error(err);
-        });
-  }
-
-function processPayment(paymentData){
-    console.log(paymentData);
-    paymentToken = paymentData.paymentMethodData.tokenIzationData.token;
-}
-
-    
