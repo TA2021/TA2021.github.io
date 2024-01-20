@@ -1,4 +1,7 @@
+
+
 const carts = document.querySelectorAll('.add-cart-btn');
+
 const products = [
     {
         name: 'Blue Shirt',
@@ -134,12 +137,15 @@ function setItems(product) {
     localStorage.setItem('productsInCart', JSON.stringify(cartItems));
 }
 
+
 function displayCart() {
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
 
     let productContainer = document.querySelector('.prods');
     let cartCost = 0; // Initialize cartCost to 0
+
+    
 
     if (cartItems && productContainer) {
         productContainer.innerHTML = '';

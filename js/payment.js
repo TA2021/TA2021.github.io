@@ -1,5 +1,6 @@
 //const response = require("koa/lib/response");
 
+
 /**
  * Google Pay API Configuration
  */
@@ -69,6 +70,7 @@ function createAndAddButton() {
  * Takes care of defining the payment data request in order to load 
  * the user payments methods available.
  */
+
 function onGooglePayButtonClicked() {
     const paymentDataRequest = { ...googlePayConfiguration };
     paymentDataRequest.merchantInfo = {
@@ -78,7 +80,7 @@ function onGooglePayButtonClicked() {
 
     paymentDataRequest.transactionInfo = {
         totalPriceStatus: 'FINAL', 
-        totalPrice: item.inCart * item.price, //item.inCart * item.price
+        totalPrice: localStorage.getItem('totalCost'), //item.inCart * item.price
         currencyCode: 'GBP',
         countryCode: 'UK',
     };
