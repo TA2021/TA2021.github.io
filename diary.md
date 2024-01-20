@@ -67,6 +67,7 @@ Today 14/11/2023 I have learnt and used the icon codes from https://css.gg/ wher
 22/11/2023 started to implement the database using express framework but it is postponded until the payment functionality is complete.
 26/11/2023 started to do the payment functionality.
 07/12/2023 Work stopped on the project's code due to emergency surgeries however the work will continue during Christmass holidays to put the project back on schedule.
+Today 20/01/24 completed the payment functionality but still face a minor issue with the payment button styling, this to be solved in later stage.
 
 
 ## Support
