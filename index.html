@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-
+        
        
 
         <!--<script type="text/javascript" src="js/LocalLogin.js"></script>-->
@@ -64,11 +64,14 @@
                 </div>
               </nav>
               <div class="search-bar">
-                <input type="search" placeholder="" >
-                
+                <input class="search" type="text" id="search-input" placeholder="&#x1F50D; Start typing to search" list="container" autocomplete="off"/>
             </div>
 
         </header>
+        <main class="cont">
+          <div class="search-display"></div>
+          <div class="posts-container"></div>
+        </main>
         <br>
 
         <div class="scene">
@@ -118,6 +121,7 @@
             <span class="dot"></span> 
           </div>-->
         <script src="js/slides.js"></script>
+        <script src="js/search.js"></script>
         <script src="js/shopping-basket.js"></script>
 
     </body>
