@@ -1,0 +1,17 @@
+{
+  "name": "tim-adams-2018-zfac125-100900214-final-year-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node.js": "^0.0.1-security"
+  }
+}
