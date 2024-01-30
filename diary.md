@@ -69,6 +69,7 @@ Today 14/11/2023 I have learnt and used the icon codes from https://css.gg/ wher
 07/12/2023 Work stopped on the project's code due to emergency surgeries however the work will continue during Christmass holidays to put the project back on schedule.
 Today 20/01/24 completed the payment functionality but still face a minor issue with the payment button styling, this to be solved in later stage.
 26/01/2024 completed the search functionalities but still not fully working becacuse the database has to be implemented first in order to fetch from localHost.
+30/01/2024 the connection with the local host has been established so the project is ready to have a DBMS. 
 
 
 ## Support
