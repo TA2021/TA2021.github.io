@@ -19,6 +19,7 @@ function populateProducts(){
     const productsHtml = products.map((product, i) => {
         return (
             `
+            
             <div class="product">
                 <div class="product-card">
                   <h2 class="name">${product.name}</h2>
@@ -36,105 +37,66 @@ function populateProducts(){
                       <h2>Men clothes<br><span>Men's wear</span></h2>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       <span class="price">£${product.price}</span>
-                      <a href="#" class="add-cart-btn${i}">Add to Cart</a>
+                      <a href="#" class="add-cart-btn">Add to Cart</a>
                       <a href="#" class="add-wish">Add to Wishlist</a>
                     </div>
                   </div>
                 </div>
               </div>
-    
+              
             `
         )
 
     });
     if(container){
-        container.innerHTML += productsHtml.toString();
+        container.innerHTML = productsHtml.toString();
+        addCartActions();
     }
 
 }
-/* const products = [
-    {
-        name: 'Blue Shirt',
-        tag: 'BlueShirt',
-        price: 29.99,
-        inCart: 0
-    },
-    {
-        name: 'Black Shirt',
-        tag: 'BlackShirt',
-        price: 23.99,
-        inCart: 0
-    },
-    {
-        name: 'White Shirt',
-        tag: 'WhiteShirt',
-        price: 89.99,
-        inCart: 0
-    },
-    {
-        name: 'Denim jeans',
-        tag: 'DenimJeans',
-        price: 150.00,
-        inCart: 0
-    },
-    {
-        name: 'Light blue jeans',
-        tag: 'LightBlue',
-        price: 50.00,
-        inCart: 0
-    },
-    {
-        name: 'Cotton jeans',
-        tag: 'Cottonjeans',
-        price: 200.00,
-        inCart: 0
-    },
-    {
-        name: 'Blue blouse',
-        tag: 'Blueblouse',
-        price: 59.99,
-        inCart: 0
-    },
-    {
-        name: 'Off White blouse',
-        tag: 'OffWhiteblouse',
-        price: 73.99,
-        inCart: 0
-    },
-    {
-        name: 'White blouse',
-        tag: 'Whiteblouse',
-        price: 89.99,
-        inCart: 0
-    },
-    {
-        name: 'Brown trouser',
-        tag: 'Browntrouser',
-        price: 140.00,
-        inCart: 0
-    },
-    {
-        name: 'Cream trouser',
-        tag: 'Creamtrouser',
-        price: 59.00,
-        inCart: 0
-    },
-    {
-        name: 'Grey trouser',
-        tag: 'Greytrouser',
-        price: 201.00,
-        inCart: 0
+
+function addCartActions(){
+
+var popupViews = document.querySelectorAll('.popup-view');
+var popupBtns = document.querySelectorAll('.popup-btn');
+var closeBtns = document.querySelectorAll('.close-btn');
+//javascript for quick view button
+var popup = function(popupClick) {
+  popupViews[popupClick].classList.add('active');
+}
+popupBtns.forEach((popupBtn, i) => {
+  popupBtn.addEventListener("click", () => {
+    popup(i);
+  });
+});
+//javascript for close button
+closeBtns.forEach((closeBtn) => {
+  closeBtn.addEventListener("click", () => {
+    popupViews.forEach((popupView) => {
+      popupView.classList.remove('active');
+    });
+  });
+});
+const carts = document.querySelectorAll('.add-cart-btn');
+
+    for (let i = 0; i < carts.length; i++) {
+        console.log('1');
+        carts[i].addEventListener('click', () => {
+            console.log('2');
+            cardsNumbers(products[i]);
+            totalCost(products[i]);
+        })
     }
-    
-]; */
+}
 
-
-for (let i = 0; i < carts.length; i++) {
+/* for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
         cardsNumbers(products[i]);
         totalCost(products[i]);
     });
-}
+} */
+
+
 
 function onLoadCardsNumbers() {
     let productNumber = localStorage.getItem('cardsNumbers');
