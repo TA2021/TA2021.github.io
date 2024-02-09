@@ -1,4 +1,5 @@
 exports.productList = [
+   // [
     {
         name: 'Blue Shirt',
         description: 'This is a Blue Shirt',
@@ -13,7 +14,8 @@ exports.productList = [
         tag: 'BlackShirt',
         price: 23.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/0545391/3.jpg?5946',
+        
     },
     {
         name: 'White Shirt',
@@ -21,7 +23,7 @@ exports.productList = [
         tag: 'WhiteShirt',
         price: 89.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://img.fruugo.com/product/6/45/507046456_max.jpg'
     },
     {
         name: 'Denim jeans',
@@ -29,7 +31,7 @@ exports.productList = [
         tag: 'DenimJeans',
         price: 150.00,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://i8.amplience.net/i/egl/MensJeans-220407-slim.jpg'
     },
     {
         name: 'Light blue jeans',
@@ -37,7 +39,7 @@ exports.productList = [
         tag: 'LightBlue',
         price: 50.00,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/33/055233/1.jpg?5486'
     },
     {
         name: 'Cotton jeans',
@@ -45,15 +47,17 @@ exports.productList = [
         tag: 'Cottonjeans',
         price: 200.00,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
     },
+//],
+//[
     {
         name: 'Blue blouse',
         description: 'This is a Blue blouse',
         tag: 'Blueblouse',
         price: 59.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://peacocks.imgix.net/media/imagery/2/0/7/5/6/1_75adccf069ea5a2/207561pls_ee4d8736435c6a4.jpg'
     },
     {
         name: 'Off White blouse',
@@ -61,7 +65,7 @@ exports.productList = [
         tag: 'OffWhiteblouse',
         price: 73.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://www.marie-claire.com/cdn/shop/files/498765525638-01.jpg?v=1693493574&width=720'
     },
     {
         name: 'White blouse',
@@ -69,7 +73,7 @@ exports.productList = [
         tag: 'Whiteblouse',
         price: 89.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://m.media-amazon.com/images/I/61GDvPjdmtL.jpg'
     },
     {
         name: 'Brown trouser',
@@ -77,7 +81,7 @@ exports.productList = [
         tag: 'Browntrouser',
         price: 140.00,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://m.media-amazon.com/images/I/61+0NJn8oyL._AC_UF894,1000_QL80_.jpg'
     },
     {
         name: 'Cream trouser',
@@ -85,7 +89,7 @@ exports.productList = [
         tag: 'Creamtrouser',
         price: 59.00,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://m.media-amazon.com/images/I/61E3wB99TIL._AC_UY580_.jpg'
     },
     {
         name: 'Grey trouser',
@@ -93,6 +97,7 @@ exports.productList = [
         tag: 'Greytrouser',
         price: 201.00,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'https://imagescdn.planetfashion.in/img/app/product/7/738426-8259061.jpg?auto=format'
     }
+//]
 ];

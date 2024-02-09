@@ -1,5 +1,5 @@
 
-var popupViews = document.querySelectorAll('.popup-view');
+/* var popupViews = document.querySelectorAll('.popup-view');
 var popupBtns = document.querySelectorAll('.popup-btn');
 var closeBtns = document.querySelectorAll('.close-btn');
 //javascript for quick view button
@@ -18,4 +18,4 @@ closeBtns.forEach((closeBtn) => {
       popupView.classList.remove('active');
     });
   });
-});
+}); */

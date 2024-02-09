@@ -3,9 +3,11 @@
 const carts = document.querySelectorAll('.add-cart-btn');
 let products = [];
 
-async function getProducts(){
+
+
+async function getProducts() {
     const response = await axios.get('http://localhost:5000/products');
-    console.log(response.data);
+    // console.log(response.data);
     products = response.data.products;
 
     populateProducts();
@@ -13,12 +15,15 @@ async function getProducts(){
 
 getProducts();
 
-function populateProducts(){
-    const container = document.querySelector('.container');
+function populateProducts() {
 
-    const productsHtml = products.map((product, i) => {
-        return (
-            `
+
+        const container = document.querySelector('.container');
+
+        const productsHtml = products.map((product, i) => {
+
+            return (
+                `
             
             <div class="product">
                 <div class="product-card">
@@ -45,44 +50,47 @@ function populateProducts(){
               </div>
               
             `
-        )
+            )
 
-    });
-    if(container){
-        container.innerHTML = productsHtml.toString();
-        addCartActions();
+
+        });
+        
+        if (container) {
+            container.innerHTML = productsHtml.toString();
+            addCartActions();
+        }
     }
 
-}
 
-function addCartActions(){
 
-var popupViews = document.querySelectorAll('.popup-view');
-var popupBtns = document.querySelectorAll('.popup-btn');
-var closeBtns = document.querySelectorAll('.close-btn');
-//javascript for quick view button
-var popup = function(popupClick) {
-  popupViews[popupClick].classList.add('active');
-}
-popupBtns.forEach((popupBtn, i) => {
-  popupBtn.addEventListener("click", () => {
-    popup(i);
-  });
-});
-//javascript for close button
-closeBtns.forEach((closeBtn) => {
-  closeBtn.addEventListener("click", () => {
-    popupViews.forEach((popupView) => {
-      popupView.classList.remove('active');
+function addCartActions() {
+
+    var popupViews = document.querySelectorAll('.popup-view');
+    var popupBtns = document.querySelectorAll('.popup-btn');
+    var closeBtns = document.querySelectorAll('.close-btn');
+    //javascript for quick view button
+    var popup = function (popupClick) {
+        popupViews[popupClick].classList.add('active');
+    }
+    popupBtns.forEach((popupBtn, i) => {
+        popupBtn.addEventListener("click", () => {
+            popup(i);
+        });
     });
-  });
-});
-const carts = document.querySelectorAll('.add-cart-btn');
+    //javascript for close button
+    closeBtns.forEach((closeBtn) => {
+        closeBtn.addEventListener("click", () => {
+            popupViews.forEach((popupView) => {
+                popupView.classList.remove('active');
+            });
+        });
+    });
+    const carts = document.querySelectorAll('.add-cart-btn');
 
     for (let i = 0; i < carts.length; i++) {
-        console.log('1');
+
         carts[i].addEventListener('click', () => {
-            console.log('2');
+
             cardsNumbers(products[i]);
             totalCost(products[i]);
         })
@@ -157,7 +165,7 @@ function displayCart() {
     let productContainer = document.querySelector('.prods');
     let cartCost = 0; // Initialize cartCost to 0
 
-    
+
 
     if (cartItems && productContainer) {
         productContainer.innerHTML = '';
@@ -252,6 +260,26 @@ function displayCart() {
             const productToUpdate = Object.values(cartItems).find(item => item.id === productId);
             if (productToUpdate) {
                 productToUpdate.inCart += 1;
+            }
+
+            // Update localStorage and display the updated cart
+            localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            localStorage.setItem('totalCost', cartCost.toString());
+            displayCart();
+        });
+    }
+
+    let removeItem = document.getElementsByClassName('gg-remove');
+    for (let i = 0; i < removeItem.length; i++) {
+        let button = removeItem[i];
+        button.addEventListener('click', (event) => {
+            // Get the unique identifier of the clicked add button
+            const productId = event.target.className.split(' ').find(cls => cls.startsWith('remove-btn-')).split('-')[2];
+
+            //Increaments the quantity of the selected item
+            const productToUpdate = Object.values(cartItems).find(item => item.id === productId);
+            if (productToUpdate) {
+                productToUpdate.inCart -= 1;
             }
 
             // Update localStorage and display the updated cart
