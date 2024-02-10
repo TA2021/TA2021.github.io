@@ -10,60 +10,77 @@ async function getProducts() {
     // console.log(response.data);
     products = response.data.products;
 
+    //assuming 6 dimensions: pages and sections
+    const numPages = 6;
+    const numSectionsPerPage = 6;
+    products = chunckArray(products, numPages * numSectionsPerPage); // splits products into pages and sections
+
     populateProducts();
 }
 
 getProducts();
 
+//splits an array into chuncks
+function chunckArray(arr, chunckSize) {
+    const chunckedArray = [];
+    for (let i = 0; i < arr.length; i += chunckSize) {
+        chunckedArray.push(arr.slice(i, i + chunckSize));
+    }
+    return chunckedArray;
+}
+
 function populateProducts() {
+    for (let page = 0; page < products.length; page++) {
+        for (let section = 0; section < products[page].length; section++) {
+            const container = document.querySelector('.container-' + (page + 1) + '-' + (section + 1));
 
+            const productsHtml = products[page][section].map((product, i) => {
 
-        const container = document.querySelector('.container');
-
-        const productsHtml = products.map((product, i) => {
-
-            return (
-                `
-            
-            <div class="product">
-                <div class="product-card">
-                  <h2 class="name">${product.name}</h2>
-                  <span class="price">£${product.price}</span>
-                  <a class="popup-btn">Quick View</a>
-                  <img src="${product.Image}" class="product-img" alt="${product.description}">
-                </div>
-                <div class="popup-view">
-                  <div class="popup-card">
-                    <a><i class="fas fa-times close-btn"></i></a>
-                    <div class="product-img">
-                      <img src="${product.Image}" alt="${product.description}">
-                    </div>
-                    <div class="info">
-                      <h2>Men clothes<br><span>Men's wear</span></h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                return (
+                    `
+                
+                <div class="product">
+                    <div class="product-card">
+                      <h2 class="name">${product.name}</h2>
                       <span class="price">£${product.price}</span>
-                      <a href="#" class="add-cart-btn">Add to Cart</a>
-                      <a href="#" class="add-wish">Add to Wishlist</a>
+                      <a class="popup-btn">Quick View</a>
+                      <img src="${product.Image}" class="product-img" alt="${product.description}">
+                    </div>
+                    <div class="popup-view">
+                      <div class="popup-card">
+                        <a><i class="fas fa-times close-btn"></i></a>
+                        <div class="product-img">
+                          <img src="${product.Image}" alt="${product.description}">
+                        </div>
+                        <div class="info">
+                          <h2>Your fashion<br><span>Modern styles</span></h2>
+                          <p>${product.description}</p>
+                          <span class="price">£${product.price}</span>
+                          <a href="#" class="add-cart-btn">Add to Cart</a>
+                          <a href="#" class="add-wish">Add to Wishlist</a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              
-            `
-            )
+                  
+                `
+                )
 
 
-        });
-        
-        if (container) {
-            container.innerHTML = productsHtml.toString();
-            addCartActions();
+            });
+
+            if (container) {
+                container.innerHTML = productsHtml.toString();
+                addCartActions(container);
+            }
         }
     }
 
+}
 
 
-function addCartActions() {
+
+function addCartActions(container) {
 
     var popupViews = document.querySelectorAll('.popup-view');
     var popupBtns = document.querySelectorAll('.popup-btn');
@@ -93,7 +110,7 @@ function addCartActions() {
 
             cardsNumbers(products[i]);
             totalCost(products[i]);
-        })
+        });
     }
 }
 
@@ -256,7 +273,7 @@ function displayCart() {
             // Get the unique identifier of the clicked add button
             const productId = event.target.className.split(' ').find(cls => cls.startsWith('add-btn-')).split('-')[2];
 
-            //Increaments the quantity of the selected item
+            //Increments the quantity of the selected item
             const productToUpdate = Object.values(cartItems).find(item => item.id === productId);
             if (productToUpdate) {
                 productToUpdate.inCart += 1;
@@ -273,10 +290,10 @@ function displayCart() {
     for (let i = 0; i < removeItem.length; i++) {
         let button = removeItem[i];
         button.addEventListener('click', (event) => {
-            // Get the unique identifier of the clicked add button
+            // Get the unique identifier of the clicked remove button
             const productId = event.target.className.split(' ').find(cls => cls.startsWith('remove-btn-')).split('-')[2];
 
-            //Increaments the quantity of the selected item
+            //decrements the quantity of the selected item
             const productToUpdate = Object.values(cartItems).find(item => item.id === productId);
             if (productToUpdate) {
                 productToUpdate.inCart -= 1;
