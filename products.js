@@ -305,3 +305,5 @@ exports.productList = [
     }
 ]
 ];
+
+//module.exports =  productList;
