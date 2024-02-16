@@ -71,6 +71,7 @@ Today 20/01/24 completed the payment functionality but still face a minor issue 
 26/01/2024 completed the search functionalities but still not fully working becacuse the database has to be implemented first in order to fetch from localHost.
 30/01/2024 the connection with the local host has been established so the project is ready to have a DBMS. 
 06/02/2024 displaying items from the backend is completed but with issues that is going to be addressed soon.
+15/02/2024 working on the search function but still facing fetching problem and I am looking for solution to solve this problem.
 
 
 ## Support
