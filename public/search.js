@@ -3,22 +3,33 @@
 const characterList = document.getElementById('characterList');
 const searchBar = document.getElementById('search-input');
 
-console.log('search running');
-console.log(searchBar);
+//console.log('search running');
+//console.log(searchBar);
 
 searchBar.addEventListener('keyup', (event) => {
     console.log(event.target.value);
     const searchString = event.target.value.toLowerCase(); // Convert to lower case for case-insensitive comparison
     const filteredProducts = products.filter((product) => {
+      console.log('Product:', product);
         return (
-            product.name.toLowerCase().includes(searchString) ||
-            product.tag.toLowerCase().includes(searchString)
+            (product.name?.toLowerCase().includes(searchString) || false) ||
+            (product.tag?.toLowerCase().includes(searchString) || false)
         );
     });
 
-    console.log(filteredProducts);
+    console.log('Search String:', searchString);
+products.forEach((products) => {
+    console.log('Product Name:', products.name);
+    console.log('Product Tag:', products.tag);
+});
+
+
+    //console.log(filteredProducts);
     displayCart(filteredProducts); // Pass filtered products to displayCart
 });
+
+
+
 
  displayCart = (products) => {
     console.log('Products:', products);
@@ -58,7 +69,13 @@ searchBar.addEventListener('keyup', (event) => {
 
 const loadProducts = async () => {
     try {
-        const res = await fetch('http://localhost:5000');
+        const res = await fetch('http://localhost:5000/products', {
+          headers:{
+            accept: 'application/json',
+            'User-agent': 'learning app',
+          }
+        });
+
         if (!res.ok) {
             throw new Error('Network response was not ok');
         }
