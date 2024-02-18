@@ -72,6 +72,7 @@ Today 20/01/24 completed the payment functionality but still face a minor issue 
 30/01/2024 the connection with the local host has been established so the project is ready to have a DBMS. 
 06/02/2024 displaying items from the backend is completed but with issues that is going to be addressed soon.
 15/02/2024 working on the search function but still facing fetching problem and I am looking for solution to solve this problem.
+18/02/2024 solved most of the search function issues and only one step left to complete this feature which is flatten the products array and the matching the input string with the relevant item.
 
 
 ## Support
