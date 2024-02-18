@@ -15,6 +15,7 @@
     "hbs": "^4.2.0",
     "nodemon": "^3.0.3",
     "type": "module",
-    "content-type": "1.0.5"
+    "content-type": "1.0.5",
+    "head": "1.0.0"
   }
 }

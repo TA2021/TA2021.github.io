@@ -10,6 +10,7 @@ app.set('view engine', 'hbs');
 
 app.use('/', require('./routes/pages'));
 app.use('/products', require('./routes/productsRouteFile'));
+
 /* app.use('http://localhost:5000/products'); */
 
 /* const productList = require('./products');

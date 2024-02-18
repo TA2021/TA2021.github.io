@@ -1,41 +1,55 @@
-//let products = []; // Declare the products variable
+// Declare the products variable
 
-const characterList = document.getElementById('characterList');
+const { productList } = require("../products");
+
+const characterList = document.getElementsByClassName('container-');
 const searchBar = document.getElementById('search-input');
 
 //console.log('search running');
 //console.log(searchBar);
+let products1 = productList;
 
-searchBar.addEventListener('keyup', (event) => {
-    console.log(event.target.value);
-    const searchString = event.target.value.toLowerCase(); // Convert to lower case for case-insensitive comparison
-    const filteredProducts = products.filter((product) => {
+
+const flattenProducts =  (products1) => {
+  return products1.flatMap(page => page.flatMap(section => section));
+};
+
+searchBar.addEventListener('input', (e) => {
+
+
+  const searchString = e.target.value.toLowerCase(); // Convert to lower case for case-insensitive comparison
+
+  //const filteredProducts = products;
+
+  console.log(e.target.value);
+  if (Array.isArray(products1)) {
+    const filteredProducts = products1.filter((product) => {
       console.log('Product:', product);
-        return (
-            (product.name?.toLowerCase().includes(searchString) || false) ||
-            (product.tag?.toLowerCase().includes(searchString) || false)
-        );
+      return (
+        (product.name?.toLowerCase().includes(searchString) || false) ||
+        (product.price?.toLowerCase().includes(searchString) || false)
+      );
     });
+    displayCarts(filteredProducts);
 
-    console.log('Search String:', searchString);
-products.forEach((products) => {
-    console.log('Product Name:', products.name);
-    console.log('Product Tag:', products.tag);
+  } else {
+    console.log('Products array is empty or undefined. Waiting for data to load.');
+  }
+
+
+  //console.log(filteredProducts);
+   // Pass filtered products to displayCart
 });
 
 
-    //console.log(filteredProducts);
-    displayCart(filteredProducts); // Pass filtered products to displayCart
-});
+const displayCarts = (products1) => {
+  console.log('Products:', products1);
+  for (let page = 0; page < products1.length; page++) {
+    for (let section = 0; section < products1[page].length; section++) {
+      const characterList = document.querySelector('.characterLists' + (page + 1) + '-' + (section + 1));
 
-
-
-
- displayCart = (products) => {
-    console.log('Products:', products);
-    if (Array.isArray(products)) {
-        const htmlString = products.map((product) => {
-            return `
+      const htmlString = products1[page][section].map((product) => {
+        return `
             <div class="product">
             <div class="product-card">
               <h2 class="name">${product.name}</h2>
@@ -60,37 +74,46 @@ products.forEach((products) => {
             </div>
           </div>
             `;
-        }).join('');
+      });
+
+      if (characterList) {
         characterList.innerHTML = htmlString;
-    } else {
-        console.error('Products is not an array:', products);
+        loadProducts(characterList);
+      }
     }
+  }
 };
 
+/* function flat(products){
+  return products.reduce((acc, val) =>
+  Array.isArray(val) ? acc.concat(flat(val)) : acc.concat(val), [],
+  );
+}
+flat(products); */
 const loadProducts = async () => {
-    try {
-        const res = await fetch('http://localhost:5000/products', {
-          headers:{
-            accept: 'application/json',
-            'User-agent': 'learning app',
-          }
-        });
+  try {
+    const res = await fetch('http://localhost:5000/products', {
+      headers: {
+        accept: 'application/json',
+        'User-agent': 'learning app',
+      }
+    });
 
-        if (!res.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await res.json();
-        const products = Object.values(data).flat(); // Extract products from the object and flatten them into a single array
-        console.log('Products:', products);
-        displayCart(products);
-    } catch (err) {
-        console.error('Error fetching products:', err);
+    if (!res.ok) {
+      throw new Error('Network response was not ok');
     }
+    
+
+ 
+    const data = await res.json();
+    products1 = flattenProducts(data); // Extract products from the object and flatten them into a single array
+    //console.log('Products:', products);
+    displayCarts(products1);
+  } catch (err) {
+    console.error('Error fetching products:', err);
+  }
+
 };
 
 
 loadProducts();
-
-
-
-
