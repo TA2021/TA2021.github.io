@@ -1,4 +1,4 @@
-// Declare the products variable
+/* // Declare the products variable
 
 const { productList } = require("../products");
 
@@ -90,7 +90,7 @@ const displayCarts = (products1) => {
   );
 }
 flat(products); */
-const loadProducts = async () => {
+/*const loadProducts = async () => {
   try {
     const res = await fetch('http://localhost:5000/products', {
       headers: {
@@ -116,4 +116,4 @@ const loadProducts = async () => {
 };
 
 
-loadProducts();
+loadProducts(); */

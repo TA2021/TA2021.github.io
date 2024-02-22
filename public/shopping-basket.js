@@ -1,24 +1,30 @@
-
-
 const carts = document.querySelectorAll('.add-cart-btn');
 let products = [];
 
 
 
 async function getProducts() {
-    const response = await axios.get('http://localhost:5000/products');
-    // console.log(response.data);
-    products = response.data.products;
+    try {
+        const response = await fetch('http://localhost:5000/products');
+        if (!response.ok) {
+            throw new Error('Failed to fetch products');
+        }
+        const data = await response.json(); // Parse response body as JSON
+        products = data.products;
 
-    //assuming 6 dimensions: pages and sections
-    const numPages = 6;
-    const numSectionsPerPage = 6;
-    products = chunckArray(products, numPages * numSectionsPerPage); // splits products into pages and sections
+        // Split products into pages and sections
+        const numPages = 6;
+        const numSectionsPerPage = 6;
+        products = chunckArray(products, numPages * numSectionsPerPage);
 
-    populateProducts();
+        populateProducts();
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
 }
 
-getProducts();
+
+getProducts(); 
 
 //splits an array into chuncks
 function chunckArray(arr, chunckSize) {
@@ -126,9 +132,15 @@ function addCartActions(container) {
 function onLoadCardsNumbers() {
     let productNumber = localStorage.getItem('cardsNumbers');
     if (productNumber) {
-        document.querySelector('.add-cart span').textContent = productNumber;
+        const cartSpan = document.querySelector('.add-cart span');
+        if (cartSpan) {
+            cartSpan.textContent = productNumber;
+        } else {
+            console.error("Element with class 'add-cart span' not found.");
+        }
     }
 }
+
 
 function cardsNumbers(product) {
     let productNumber = localStorage.getItem('cardsNumbers');
@@ -149,29 +161,44 @@ function generateProductId() {
 }
 
 function setItems(product) {
+    if (!product) {
+        return; // Return early if product is null or undefined
+    }
+
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
 
+    const productTag = product.tag; // Get the tag property once
+
     if (cartItems != null) {
-        if (cartItems[product.tag] == undefined) {
+        if (cartItems[productTag] == undefined) {
             cartItems = {
                 ...cartItems,
-                [product.tag]: {
+                [productTag]: {
                     ...product,
                     id: generateProductId() // Adds a unique identifier to each product
                 }
             };
         }
-        cartItems[product.tag].inCart += 1;
+        cartItems[productTag].inCart += 1;
     } else {
         product.inCart = 1;
         product.id = generateProductId();
         cartItems = {
-            [product.tag]: product
+            [productTag]: product
         };
     }
 
     localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+}
+
+
+function totalCost(products) {
+    let total = 0;
+    for (let i = 0; i < products.length; i++) {
+        total += products[i].inCart * products[i].price;
+    }
+    return total;
 }
 
 
@@ -191,11 +218,13 @@ function displayCart() {
             const closeBtnId = `close-btn-${item.id}`; // Update the close button's unique identifier
             const addBtnId = `add-btn-${item.id}`;
             const removeBtnId = `remove-btn-${item.id}`;
+
+            const imageUrl = item.tag ? `/images/${item.Image}.jpg` : 'default-image.jpg';
             productContainer.innerHTML += `
                 <div class="prod">
                     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'>
                     <i class="gg-close-o ${closeBtnId}"></i>
-                    <img src="./images/${item.tag}.jpg">
+                    <img src="./images/${imageUrl}">
                     <span>${item.name}</span>
                 </div>
                 <div class="price">£${item.price}</div>
@@ -311,5 +340,3 @@ function displayCart() {
 
 onLoadCardsNumbers();
 displayCart();
-
-

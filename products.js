@@ -6,7 +6,7 @@ exports.productList = [
         tag: 'BlueShirt',
         price: 29.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: 'images/BlueShirt.jpg'
     },
     {
         name: 'Black Shirt',
@@ -14,7 +14,7 @@ exports.productList = [
         tag: 'BlackShirt',
         price: 23.99,
         inCart: 0,
-        Image: 'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/0545391/3.jpg?5946',
+        Image: 'images/BlackShirt.jpg',
         
     },
     {
@@ -23,7 +23,7 @@ exports.productList = [
         tag: 'WhiteShirt',
         price: 89.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/6/45/507046456_max.jpg'
+        Image: 'images/WhiteShirt.jpg'
     },
     {
         name: 'Denim jeans',
@@ -31,7 +31,7 @@ exports.productList = [
         tag: 'DenimJeans',
         price: 150.00,
         inCart: 0,
-        Image: 'https://i8.amplience.net/i/egl/MensJeans-220407-slim.jpg'
+        Image: 'images/DenimJeans.jpg'
     },
     {
         name: 'Light blue jeans',
@@ -39,7 +39,7 @@ exports.productList = [
         tag: 'LightBlue',
         price: 50.00,
         inCart: 0,
-        Image: 'https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/33/055233/1.jpg?5486'
+        Image: 'images/LightBlue.jpg'
     },
     {
         name: 'Cotton jeans',
@@ -47,7 +47,7 @@ exports.productList = [
         tag: 'Cottonjeans',
         price: 200.00,
         inCart: 0,
-        Image: 'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
+        Image: 'images/Cottonjeans.jpg'
     }
 ],
 [
@@ -57,7 +57,7 @@ exports.productList = [
         tag: 'Blueblouse',
         price: 59.99,
         inCart: 0,
-        Image: 'https://peacocks.imgix.net/media/imagery/2/0/7/5/6/1_75adccf069ea5a2/207561pls_ee4d8736435c6a4.jpg'
+        Image: 'images/BlueBlouse.jpg'
     },
     {
         name: 'Off White blouse',
@@ -65,7 +65,7 @@ exports.productList = [
         tag: 'OffWhiteblouse',
         price: 73.99,
         inCart: 0,
-        Image: 'https://www.marie-claire.com/cdn/shop/files/498765525638-01.jpg?v=1693493574&width=720'
+        Image: 'images/OffWhiteblouse.jpg'
     },
     {
         name: 'White blouse',
@@ -73,7 +73,7 @@ exports.productList = [
         tag: 'Whiteblouse',
         price: 89.99,
         inCart: 0,
-        Image: 'https://m.media-amazon.com/images/I/61GDvPjdmtL.jpg'
+        Image: 'images/white-blouse.jpg'
     },
     {
         name: 'Brown trouser',
@@ -81,7 +81,7 @@ exports.productList = [
         tag: 'Browntrouser',
         price: 140.00,
         inCart: 0,
-        Image: 'https://m.media-amazon.com/images/I/61+0NJn8oyL._AC_UF894,1000_QL80_.jpg'
+        Image: 'images/brown-trouser.jpg'
     },
     {
         name: 'Cream trouser',
@@ -89,7 +89,7 @@ exports.productList = [
         tag: 'Creamtrouser',
         price: 59.00,
         inCart: 0,
-        Image: 'https://m.media-amazon.com/images/I/61E3wB99TIL._AC_UY580_.jpg'
+        Image: 'images/creamTrouser.jpg'
     },
     {
         name: 'Grey trouser',
@@ -97,7 +97,7 @@ exports.productList = [
         tag: 'Greytrouser',
         price: 201.00,
         inCart: 0,
-        Image: 'https://imagescdn.planetfashion.in/img/app/product/7/738426-8259061.jpg?auto=format'
+        Image: 'images/greyTrouser.jpg'
     }
 ],
 [
@@ -158,7 +158,7 @@ exports.productList = [
         tag: 'BlueShirt',
         price: 29.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image:  '' //'https://img.fruugo.com/product/2/90/617160902_max.jpg' 
     },
     {
         name: 'Black Shirt',
@@ -166,7 +166,7 @@ exports.productList = [
         tag: 'BlackShirt',
         price: 23.99,
         inCart: 0,
-        Image: 'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/0545391/3.jpg?5946',
+        Image: '' //'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/0545391/3.jpg?5946',
         
     },
     {
@@ -175,7 +175,7 @@ exports.productList = [
         tag: 'WhiteShirt',
         price: 89.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/6/45/507046456_max.jpg'
+        Image: '' //'https://img.fruugo.com/product/6/45/507046456_max.jpg'
     },
     {
         name: 'Denim jeans',
@@ -183,7 +183,7 @@ exports.productList = [
         tag: 'DenimJeans',
         price: 150.00,
         inCart: 0,
-        Image: 'https://i8.amplience.net/i/egl/MensJeans-220407-slim.jpg'
+        Image: '' //'https://i8.amplience.net/i/egl/MensJeans-220407-slim.jpg'
     },
     {
         name: 'Light blue jeans',
@@ -191,7 +191,7 @@ exports.productList = [
         tag: 'LightBlue',
         price: 50.00,
         inCart: 0,
-        Image: 'https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/33/055233/1.jpg?5486'
+        Image: '' //'https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/33/055233/1.jpg?5486'
     },
     {
         name: 'Cotton jeans',
@@ -199,7 +199,7 @@ exports.productList = [
         tag: 'Cottonjeans',
         price: 200.00,
         inCart: 0,
-        Image: 'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
+        Image: '' //'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
     }
 ],
 [
@@ -209,7 +209,7 @@ exports.productList = [
         tag: 'BlueShirt',
         price: 29.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image: '' //'https://img.fruugo.com/product/2/90/617160902_max.jpg'
     },
     {
         name: 'Black Shirt',
@@ -217,7 +217,7 @@ exports.productList = [
         tag: 'BlackShirt',
         price: 23.99,
         inCart: 0,
-        Image: 'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/0545391/3.jpg?5946',
+        Image: '' //'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/0545391/3.jpg?5946',
         
     },
     {
@@ -226,7 +226,7 @@ exports.productList = [
         tag: 'WhiteShirt',
         price: 89.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/6/45/507046456_max.jpg'
+        Image: '' // 'https://img.fruugo.com/product/6/45/507046456_max.jpg'
     },
     {
         name: 'Denim jeans',
@@ -234,7 +234,7 @@ exports.productList = [
         tag: 'DenimJeans',
         price: 150.00,
         inCart: 0,
-        Image: 'https://i8.amplience.net/i/egl/MensJeans-220407-slim.jpg'
+       Image: '' //'https://i8.amplience.net/i/egl/MensJeans-220407-slim.jpg'
     },
     {
         name: 'Light blue jeans',
@@ -242,7 +242,7 @@ exports.productList = [
         tag: 'LightBlue',
         price: 50.00,
         inCart: 0,
-        Image: 'https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/33/055233/1.jpg?5486'
+        Image: '' //'https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/33/055233/1.jpg?5486'
     },
     {
         name: 'Cotton jeans',
@@ -250,7 +250,7 @@ exports.productList = [
         tag: 'Cottonjeans',
         price: 200.00,
         inCart: 0,
-        Image: 'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
+        Image:'' //'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
     }
 ],
 [
@@ -260,7 +260,7 @@ exports.productList = [
         tag: 'BlueShirt',
         price: 29.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/2/90/617160902_max.jpg'
+        Image:'' //'https://img.fruugo.com/product/2/90/617160902_max.jpg'
     },
     {
         name: 'Black Shirt',
@@ -268,7 +268,7 @@ exports.productList = [
         tag: 'BlackShirt',
         price: 23.99,
         inCart: 0,
-        Image: 'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/0545391/3.jpg?5946',
+        Image:'' //'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/85/0545391/3.jpg?5946',
         
     },
     {
@@ -277,7 +277,7 @@ exports.productList = [
         tag: 'WhiteShirt',
         price: 89.99,
         inCart: 0,
-        Image: 'https://img.fruugo.com/product/6/45/507046456_max.jpg'
+        Image:'' //'https://img.fruugo.com/product/6/45/507046456_max.jpg'
     },
     {
         name: 'Denim jeans',
@@ -285,7 +285,7 @@ exports.productList = [
         tag: 'DenimJeans',
         price: 150.00,
         inCart: 0,
-        Image: 'https://i8.amplience.net/i/egl/MensJeans-220407-slim.jpg'
+        Image:'' // 'https://i8.amplience.net/i/egl/MensJeans-220407-slim.jpg'
     },
     {
         name: 'Light blue jeans',
@@ -293,7 +293,7 @@ exports.productList = [
         tag: 'LightBlue',
         price: 50.00,
         inCart: 0,
-        Image: 'https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/33/055233/1.jpg?5486'
+        Image:'' //'https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/33/055233/1.jpg?5486'
     },
     {
         name: 'Cotton jeans',
@@ -301,7 +301,7 @@ exports.productList = [
         tag: 'Cottonjeans',
         price: 200.00,
         inCart: 0,
-        Image: 'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
+        Image:'' //'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
     }
 ]
 ];
