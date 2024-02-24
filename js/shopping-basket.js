@@ -1,139 +1,97 @@
+
+
 const carts = document.querySelectorAll('.add-cart-btn');
-let products = [];
 
-
-
-async function getProducts() {
-    try {
-        const response = await fetch('http://localhost:5000/products');
-        if (!response.ok) {
-            throw new Error('Failed to fetch products');
-        }
-        const data = await response.json(); // Parse response body as JSON
-        products = data.products;
-        //console.log(data.products);
-        
-        // Split products into pages and sections
-       // const numPages = 6;
-        //const numSectionsPerPage = 6;
-       // products = ({tag, name}) => products.find(a => a.some(o => o.tag === tag || o.name === name));
-       //let getArray = ({tag, name}) => products.find(a => a.some(o => o.tag === tag || o.name === name));
-        populateProducts();
-    } catch (error) {
-        console.error('Error fetching products:', error);
+const products = [
+    {
+        name: 'Blue Shirt',
+        tag: 'BlueShirt',
+        price: 29.99,
+        inCart: 0
+    },
+    {
+        name: 'Black Shirt',
+        tag: 'BlackShirt',
+        price: 23.99,
+        inCart: 0
+    },
+    {
+        name: 'White Shirt',
+        tag: 'WhiteShirt',
+        price: 89.99,
+        inCart: 0
+    },
+    {
+        name: 'Denim jeans',
+        tag: 'DenimJeans',
+        price: 150.00,
+        inCart: 0
+    },
+    {
+        name: 'Light blue jeans',
+        tag: 'LightBlue',
+        price: 50.00,
+        inCart: 0
+    },
+    {
+        name: 'Cotton jeans',
+        tag: 'Cottonjeans',
+        price: 200.00,
+        inCart: 0
+    },
+    {
+        name: 'Blue blouse',
+        tag: 'Blueblouse',
+        price: 59.99,
+        inCart: 0
+    },
+    {
+        name: 'Off White blouse',
+        tag: 'OffWhiteblouse',
+        price: 73.99,
+        inCart: 0
+    },
+    {
+        name: 'White blouse',
+        tag: 'Whiteblouse',
+        price: 89.99,
+        inCart: 0
+    },
+    {
+        name: 'Brown trouser',
+        tag: 'Browntrouser',
+        price: 140.00,
+        inCart: 0
+    },
+    {
+        name: 'Cream trouser',
+        tag: 'Creamtrouser',
+        price: 59.00,
+        inCart: 0
+    },
+    {
+        name: 'Grey trouser',
+        tag: 'Greytrouser',
+        price: 201.00,
+        inCart: 0
     }
-    console.log('Products:', products);
-}
+    
+]
 
 
-getProducts(); 
-
-//splits an array into chuncks
-/* function chunkArray(arr, chunkSize) {
-    const chunkedArray = [];
-    for (let i = 0; i < arr.length; i += chunkSize) {
-        chunkedArray.push(arr.slice(i, i + chunkSize));
-    }
-    return chunkedArray;
-} */
-
-function populateProducts() {
-    const container = document.querySelector('.container');
-
-    if (container) {
-        const productsHtml = products.map(product => `
-            <div class="product">
-                <div class="product-card">
-                    <h2 class="name">${product.name}</h2>
-                    <span class="price">£${product.price}</span>
-                    <a class="popup-btn">Quick View</a>
-                    <img src="${product.Image}" class="product-img" alt="Image of ${product.name}">
-                </div>
-                <div class="popup-view">
-                    <div class="popup-card">
-                        <a><i class="fas fa-times close-btn"></i></a>
-                        <div class="product-img">
-                            <img src="${product.Image}" alt="Image of ${product.name}">
-                        </div>
-                        <div class="info">
-                            <h2>Your fashion<br><span>Modern styles</span></h2>
-                            <p>${product.description}</p>
-                            <span class="price">£${product.price}</span>
-                            <a href="#" class="add-cart-btn">Add to Cart</a>
-                            <a href="#" class="add-wish">Add to Wishlist</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-
-        container.innerHTML = productsHtml;
-        addCartActions(container);
-    }
-}
-
-
-
-
-               
-
-
-
-function addCartActions(container) {
-
-    var popupViews = document.querySelectorAll('.popup-view');
-    var popupBtns = document.querySelectorAll('.popup-btn');
-    var closeBtns = document.querySelectorAll('.close-btn');
-    //javascript for quick view button
-    var popup = function (popupClick) {
-        popupViews[popupClick].classList.add('active');
-    }
-    popupBtns.forEach((popupBtn, i) => {
-        popupBtn.addEventListener("click", () => {
-            popup(i);
-        });
-    });
-    //javascript for close button
-    closeBtns.forEach((closeBtn) => {
-        closeBtn.addEventListener("click", () => {
-            popupViews.forEach((popupView) => {
-                popupView.classList.remove('active');
-            });
-        });
-    });
-    const carts = document.querySelectorAll('.add-cart-btn');
-
-    for (let i = 0; i < carts.length; i++) {
-
-        carts[i].addEventListener('click', () => {
-
-            cardsNumbers(products[i]);
-            totalCost(products[i]);
-        });
-    }
-}
-
-/* for (let i = 0; i < carts.length; i++) {
+for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
         cardsNumbers(products[i]);
         totalCost(products[i]);
     });
-} */
-
-
+}
 
 function onLoadCardsNumbers() {
     let productNumber = localStorage.getItem('cardsNumbers');
     if (productNumber) {
-        const cartSpan = document.querySelector('.add-cart span');
-        if (cartSpan) {
-            cartSpan.textContent = productNumber;
-        } else {
-            console.error("Element with class 'add-cart span' not found.");
-        }
+        document.querySelector('.add-cart span').textContent = productNumber;
     }
 }
-
 
 function cardsNumbers(product) {
     let productNumber = localStorage.getItem('cardsNumbers');
@@ -154,55 +112,40 @@ function generateProductId() {
 }
 
 function setItems(product) {
-    if (!product) {
-        return; // Return early if product is null or undefined
-    }
-
     let cartItems = localStorage.getItem('productsInCart');
-    
     cartItems = JSON.parse(cartItems);
-    
-    const productTag = product.tag; // Get the tag property once
-    
+
     if (cartItems != null) {
-        if (cartItems[productTag] == undefined) {
+        if (cartItems[product.tag] == undefined) {
             cartItems = {
                 ...cartItems,
-                [productTag]: {
+                [product.tag]: {
                     ...product,
                     id: generateProductId() // Adds a unique identifier to each product
                 }
             };
         }
-        cartItems[productTag].inCart += 1;
+        cartItems[product.tag].inCart += 1;
     } else {
         product.inCart = 1;
         product.id = generateProductId();
         cartItems = {
-            [productTag]: product
+            [product.tag]: product
         };
     }
-    
+
     localStorage.setItem('productsInCart', JSON.stringify(cartItems));
 }
 
 
-function totalCost() {
-    let cartItems = localStorage.getItem('productsInCart');
-    cartItems = JSON.parse(cartItems) || {};
-    let total = Object.values(cartItems).reduce((acc, item) => acc + (item.inCart * item.price), 0);
-    localStorage.setItem('totalCost', total.toString());
-    return total;
-}
-
-
 function displayCart() {
-    let cartItems = JSON.parse(localStorage.getItem('productsInCart')) || {};
-    
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
+
     let productContainer = document.querySelector('.prods');
     let cartCost = 0; // Initialize cartCost to 0
 
-
+    
 
     if (cartItems && productContainer) {
         productContainer.innerHTML = '';
@@ -211,8 +154,6 @@ function displayCart() {
             const closeBtnId = `close-btn-${item.id}`; // Update the close button's unique identifier
             const addBtnId = `add-btn-${item.id}`;
             const removeBtnId = `remove-btn-${item.id}`;
-            
-            //const imageUrl = item.tag ? `/images/${item.tag}.jpg` : 'default-image.jpg';
             productContainer.innerHTML += `
                 <div class="prod">
                     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'>
@@ -295,30 +236,10 @@ function displayCart() {
             // Get the unique identifier of the clicked add button
             const productId = event.target.className.split(' ').find(cls => cls.startsWith('add-btn-')).split('-')[2];
 
-            //Increments the quantity of the selected item
+            //Increaments the quantity of the selected item
             const productToUpdate = Object.values(cartItems).find(item => item.id === productId);
             if (productToUpdate) {
                 productToUpdate.inCart += 1;
-            }
-
-            // Update localStorage and display the updated cart
-            localStorage.setItem('productsInCart', JSON.stringify(cartItems));
-            localStorage.setItem('totalCost', cartCost.toString());
-            displayCart();
-        });
-    }
-
-    let removeItem = document.getElementsByClassName('gg-remove');
-    for (let i = 0; i < removeItem.length; i++) {
-        let button = removeItem[i];
-        button.addEventListener('click', (event) => {
-            // Get the unique identifier of the clicked remove button
-            const productId = event.target.className.split(' ').find(cls => cls.startsWith('remove-btn-')).split('-')[2];
-
-            //decrements the quantity of the selected item
-            const productToUpdate = Object.values(cartItems).find(item => item.id === productId);
-            if (productToUpdate) {
-                productToUpdate.inCart -= 1;
             }
 
             // Update localStorage and display the updated cart
@@ -333,3 +254,5 @@ function displayCart() {
 
 onLoadCardsNumbers();
 displayCart();
+
+

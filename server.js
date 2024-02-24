@@ -10,6 +10,7 @@ app.set('view engine', 'hbs');
 
 app.use('/', require('./routes/pages'));
 app.use('/products', require('./routes/productsRouteFile'));
+app.use('/images', express.static('./public/images'));
 
 app.listen(5000, () => {
     console.log("Server is listening on port 5000");

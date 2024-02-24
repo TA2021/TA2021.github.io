@@ -1,12 +1,12 @@
 exports.productList = [
-   [
+   
     {
         name: 'Blue Shirt',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         tag: 'BlueShirt',
         price: 29.99,
         inCart: 0,
-        Image: 'images/BlueShirt.jpg'
+        Image: '/images/BlueShirt.jpg'
     },
     {
         name: 'Black Shirt',
@@ -14,7 +14,7 @@ exports.productList = [
         tag: 'BlackShirt',
         price: 23.99,
         inCart: 0,
-        Image: 'images/BlackShirt.jpg',
+        Image: '/images/BlackShirt.jpg',
         
     },
     {
@@ -23,7 +23,7 @@ exports.productList = [
         tag: 'WhiteShirt',
         price: 89.99,
         inCart: 0,
-        Image: 'images/WhiteShirt.jpg'
+        Image: '/images/WhiteShirt.jpg'
     },
     {
         name: 'Denim jeans',
@@ -31,7 +31,7 @@ exports.productList = [
         tag: 'DenimJeans',
         price: 150.00,
         inCart: 0,
-        Image: 'images/DenimJeans.jpg'
+        Image: '/images/DenimJeans.jpg'
     },
     {
         name: 'Light blue jeans',
@@ -39,7 +39,7 @@ exports.productList = [
         tag: 'LightBlue',
         price: 50.00,
         inCart: 0,
-        Image: 'images/LightBlue.jpg'
+        Image: '/images/LightBlue.jpg'
     },
     {
         name: 'Cotton jeans',
@@ -47,17 +47,17 @@ exports.productList = [
         tag: 'Cottonjeans',
         price: 200.00,
         inCart: 0,
-        Image: 'images/Cottonjeans.jpg'
-    }
-],
-[
+        Image: '/images/Cottonjeans.jpg'
+    },
+
+
     {
         name: 'Blue blouse',
         description: 'This is a Blue blouse',
         tag: 'Blueblouse',
         price: 59.99,
         inCart: 0,
-        Image: 'images/BlueBlouse.jpg'
+        Image: '/images/BlueBlouse.jpg'
     },
     {
         name: 'Off White blouse',
@@ -65,7 +65,7 @@ exports.productList = [
         tag: 'OffWhiteblouse',
         price: 73.99,
         inCart: 0,
-        Image: 'images/OffWhiteblouse.jpg'
+        Image: '/images/OffWhiteblouse.jpg'
     },
     {
         name: 'White blouse',
@@ -73,7 +73,7 @@ exports.productList = [
         tag: 'Whiteblouse',
         price: 89.99,
         inCart: 0,
-        Image: 'images/white-blouse.jpg'
+        Image: '/images/white-blouse.jpg'
     },
     {
         name: 'Brown trouser',
@@ -81,7 +81,7 @@ exports.productList = [
         tag: 'Browntrouser',
         price: 140.00,
         inCart: 0,
-        Image: 'images/brown-trouser.jpg'
+        Image: '/images/brown-trouser.jpg'
     },
     {
         name: 'Cream trouser',
@@ -89,7 +89,7 @@ exports.productList = [
         tag: 'Creamtrouser',
         price: 59.00,
         inCart: 0,
-        Image: 'images/creamTrouser.jpg'
+        Image: '/images/creamTrouser.jpg'
     },
     {
         name: 'Grey trouser',
@@ -97,10 +97,10 @@ exports.productList = [
         tag: 'Greytrouser',
         price: 201.00,
         inCart: 0,
-        Image: 'images/greyTrouser.jpg'
-    }
-],
-[
+        Image: '/images/greyTrouser.jpg'
+    },
+
+
     {
         name: 'Girls dress',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -149,9 +149,9 @@ exports.productList = [
         price: 70.00,
         inCart: 0,
         Image: '/images/boys-jumper2.webp'
-    }
-],
-[  // from this position down to be fixed at a later date or until a better solution is found
+    },
+
+ // from this position down to be fixed at a later date or until a better solution is found
     {
         name: 'Blue Shirt',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -200,9 +200,9 @@ exports.productList = [
         price: 200.00,
         inCart: 0,
         Image: '' //'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
-    }
-],
-[
+    },
+
+
     {
         name: 'Blue Shirt',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -251,9 +251,9 @@ exports.productList = [
         price: 200.00,
         inCart: 0,
         Image:'' //'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
-    }
-],
-[
+    },
+
+
     {
         name: 'Blue Shirt',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -303,7 +303,7 @@ exports.productList = [
         inCart: 0,
         Image:'' //'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
     }
-]
+
 ];
 
 //module.exports =  productList;
