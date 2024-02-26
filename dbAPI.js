@@ -1,4 +1,4 @@
-var http = require('http');
+/* var http = require('http');
 var url = require('url');
 var fs = require('fs');
 http.createServer(function (req, res) {
@@ -13,4 +13,25 @@ http.createServer(function (req, res) {
     res.write(data);
     return res.end();
   });
-}).listen(8080);
+}).listen(8080); */
+
+const {Client} = require('pg');
+const client = new Client({
+  host: 'localhost',
+  user: 'postgres',
+  port: 5432,
+  password: 'Yasham1984',
+  database: 'your-fashion-data'
+});
+
+client.connect();
+
+client.query('select * from Users', (err, res) => {
+  if(!err){
+    console.log(res.rows);
+    console.log('connected');
+  }else{
+    console.log(err.message);
+  }
+  client.end;
+});

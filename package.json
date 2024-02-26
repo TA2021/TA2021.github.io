@@ -1,11 +1,11 @@
 {
   "name": "code",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +17,7 @@
     "type": "module",
     "content-type": "1.0.5",
     "head": "1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
