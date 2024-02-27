@@ -15,8 +15,12 @@ http.createServer(function (req, res) {
   });
 }).listen(8080); */
 
-const {Client} = require('pg');
-const client = new Client({
+const {Pool} = require('pg');
+const fs = require('fs');
+const { resolve } = require('path');
+const { rejects } = require('assert');
+
+const pool = new Pool({
   host: 'localhost',
   user: 'postgres',
   port: 5432,
@@ -24,9 +28,9 @@ const client = new Client({
   database: 'your-fashion-data'
 });
 
-client.connect();
+//pool.connect();
 
-client.query('select * from Users', (err, res) => {
+/* pool.query('select * from Users', (err, res) => {
   if(!err){
     console.log(res.rows);
     console.log('connected');
@@ -34,4 +38,34 @@ client.query('select * from Users', (err, res) => {
     console.log(err.message);
   }
   client.end;
-});
+}); */
+
+const readImage = (path) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, (err, data) => {
+      if(err){
+        reject(err);
+      }else{
+        resolve(data);
+      }
+    });
+  });
+};
+
+const insertProduct = async (productID, product_name, description, price, stock_level, imagePath, tag) => {
+  try{
+    const client = await pool.connect();
+    const image = await readImage(imagePath);
+    const query = 'INSERT INTO Products (productID, product_name, description, price, stock_level, image, tag) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+    const values = [productID, product_name, description, price, stock_level, image, tag];
+    await client.query(query, values);
+    console.log('Product inserted successfully.');
+    client.release();
+  }catch(err){
+    console.log(err.message);
+  }
+};
+
+insertProduct(1, 'Blue Shirt', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..', 
+29.99, 10, 'images/BlueShirt.jpg', 'BlueShirt');
+
