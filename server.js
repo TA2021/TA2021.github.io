@@ -69,6 +69,30 @@ app.get('/kids-products', async (req, res) => {
   }
 });
 
+app.get('/men-s-products', async (req, res) => {
+  try{
+      const client = await pool.connect();
+      const { rows } = await client.query("SELECT * FROM products WHERE category = 'M-shoes'");
+      res.json(rows);
+      client.release();
+  }catch(err){
+      res.status(500).send('Server error');
+      console.error('Error exucting query', err.stack);
+  }
+});
+
+app.get('/women-s-products', async (req, res) => {
+  try{
+      const client = await pool.connect();
+      const { rows } = await client.query("SELECT * FROM products WHERE category = 'W-shoes'");
+      res.json(rows);
+      client.release();
+  }catch(err){
+      res.status(500).send('Server error');
+      console.error('Error exucting query', err.stack);
+  }
+});
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });

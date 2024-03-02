@@ -71,6 +71,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const menProductsLink = document.getElementById('men-products');
     const womenProductsLink = document.getElementById('women-products');
     const kidsProductsLink = document.getElementById('kids-products');
+    const menShoesProductsLink = document.getElementById('men-s-products');
+    const womenShoesProductsLink = document.getElementById('women-s-products');
 
     if (menProductsLink) {
         menProductsLink.addEventListener('click', (e) => {
@@ -96,6 +98,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     } else {
         console.error("Kids' products link not found.");
+    }
+    if (menShoesProductsLink) {
+        menShoesProductsLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            populateProducts('/men-s-products');
+        });
+    } else {
+        console.error("Men Shoes products link not found.");
+    }
+    if (womenShoesProductsLink) {
+        womenShoesProductsLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            populateProducts('/women-s-products');
+        });
+    } else {
+        console.error("Women Shoes products link not found.");
     }
 });
 
