@@ -74,7 +74,7 @@ Today 20/01/24 completed the payment functionality but still face a minor issue 
 15/02/2024 working on the search function but still facing fetching problem and I am looking for solution to solve this problem.
 18/02/2024 solved most of the search function issues and only one step left to complete this feature which is flatten the products array and the matching the input string with the relevant item.
 24/02/2024 solved displaying items on the cart page issue but still another issue with displaying items on the other pages to be sorted and the solution might be by moving all item to the databse so it can be queried accordingly.
-
+02/03/2024 most of the pages are now fetching products from the database, but still have to refactor the function that adding and displaying products to the basket page so that it will functional again.
 ## Support
 For any question please contact me on zfac125@live.rhul.ac.uk 
 
