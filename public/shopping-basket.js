@@ -1,59 +1,38 @@
-const carts = document.querySelectorAll('.add-cart-btn');
-let products = [];
 
 
-
-async function getProducts() {
-    try {
-        const response = await fetch('http://localhost:5000/products');
-        if (!response.ok) {
-            throw new Error('Failed to fetch products');
-        }
-        const data = await response.json(); // Parse response body as JSON
-        products = data.products;
-        //console.log(data.products);
-        
-        // Split products into pages and sections
-       // const numPages = 6;
-        //const numSectionsPerPage = 6;
-       // products = ({tag, name}) => products.find(a => a.some(o => o.tag === tag || o.name === name));
-       //let getArray = ({tag, name}) => products.find(a => a.some(o => o.tag === tag || o.name === name));
-        populateProducts();
-    } catch (error) {
-        console.error('Error fetching products:', error);
-    }
-    console.log('Products:', products);
-}
-
-
-getProducts(); 
-
-//splits an array into chuncks
-/* function chunkArray(arr, chunkSize) {
-    const chunkedArray = [];
-    for (let i = 0; i < arr.length; i += chunkSize) {
-        chunkedArray.push(arr.slice(i, i + chunkSize));
-    }
-    return chunkedArray;
-} */
-
-function populateProducts() {
+async function populateProducts(endpoint) {
     const container = document.querySelector('.container');
 
-    if (container) {
-        const productsHtml = products.map(product => `
+    if(!container){
+        console.error('Container element not found');
+        return;
+    }
+    
+    try{
+    const response = await fetch(endpoint);
+    const products = await response.json();
+/*     const response1 = await fetch('/women-products');
+    const womenProducts = await response1.json();
+    const products = menProducts.concat(womenProducts); */
+
+    container.innerHTML = '';
+
+
+    products.forEach(product => {
+        const productsHtml = document.createElement('div');
+        productsHtml.innerHTML =  `
             <div class="product">
                 <div class="product-card">
                     <h2 class="name">${product.name}</h2>
                     <span class="price">£${product.price}</span>
                     <a class="popup-btn">Quick View</a>
-                    <img src="${product.Image}" class="product-img" alt="Image of ${product.name}">
+                    <img src="${product.image}" class="product-img" alt="Image of ${product.name}">
                 </div>
                 <div class="popup-view">
                     <div class="popup-card">
                         <a><i class="fas fa-times close-btn"></i></a>
                         <div class="product-img">
-                            <img src="${product.Image}" alt="Image of ${product.name}">
+                            <img src="${product.image}" alt="Image of ${product.name}">
                         </div>
                         <div class="info">
                             <h2>Your fashion<br><span>Modern styles</span></h2>
@@ -65,12 +44,51 @@ function populateProducts() {
                     </div>
                 </div>
             </div>
-        `).join('');
+        `;
+        container.appendChild(productsHtml);
+        
+       
 
-        container.innerHTML = productsHtml;
-        addCartActions(container);
-    }
+       if(products.image){
+            const img = new Image();
+            img.src =`data:image/jpeg;base64,${product.image.toString('base64')}`;
+            productsHtml.appendChild(img);
+        }
+        
+/*         if(container){
+            container.appendChild(productsHtml);
+        }else{
+            console.error('Container element not found');
+        }  */
+    });
+}catch (error){
+    console.error('Failed to populate products:', error);
 }
+    //console.log(container);
+    addCartActions(container);
+}
+document.addEventListener('DOMContentLoaded', (event) => {
+    const menProductsLink = document.getElementById('men-products');
+    const womenProductsLink = document.getElementById('women-products');
+
+    if (menProductsLink) {
+        menProductsLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            populateProducts('/men-products');
+        });
+    } else {
+        console.error("Men's products link not found.");
+    }
+
+    if (womenProductsLink) {
+        womenProductsLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            populateProducts('/women-products');
+        });
+    } else {
+        console.error("Women's products link not found.");
+    }
+});
 
 
 
@@ -80,6 +98,7 @@ function populateProducts() {
 
 
 function addCartActions(container) {
+    const products = [];
 
     var popupViews = document.querySelectorAll('.popup-view');
     var popupBtns = document.querySelectorAll('.popup-btn');
@@ -112,14 +131,6 @@ function addCartActions(container) {
         });
     }
 }
-
-/* for (let i = 0; i < carts.length; i++) {
-    carts[i].addEventListener('click', () => {
-        cardsNumbers(products[i]);
-        totalCost(products[i]);
-    });
-} */
-
 
 
 function onLoadCardsNumbers() {
