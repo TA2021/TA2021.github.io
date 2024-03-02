@@ -57,6 +57,18 @@ app.get('/women-products', async (req, res) => {
   }
 });
 
+app.get('/kids-products', async (req, res) => {
+  try{
+      const client = await pool.connect();
+      const { rows } = await client.query("SELECT * FROM products WHERE category = 'kids'");
+      res.json(rows);
+      client.release();
+  }catch(err){
+      res.status(500).send('Server error');
+      console.error('Error exucting query', err.stack);
+  }
+});
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });

@@ -70,6 +70,7 @@ async function populateProducts(endpoint) {
 document.addEventListener('DOMContentLoaded', (event) => {
     const menProductsLink = document.getElementById('men-products');
     const womenProductsLink = document.getElementById('women-products');
+    const kidsProductsLink = document.getElementById('kids-products');
 
     if (menProductsLink) {
         menProductsLink.addEventListener('click', (e) => {
@@ -87,6 +88,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     } else {
         console.error("Women's products link not found.");
+    }
+    if (kidsProductsLink) {
+        kidsProductsLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            populateProducts('/kids-products');
+        });
+    } else {
+        console.error("Kids' products link not found.");
     }
 });
 
