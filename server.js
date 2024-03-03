@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const {Pool} = require('pg');
 const app = express();
-const port = 5000;
+const port = 7000;
 
 const pool = new Pool({
   host: 'localhost',
@@ -92,6 +92,18 @@ app.get('/women-s-products', async (req, res) => {
       console.error('Error exucting query', err.stack);
   }
 });
+
+ app.get('/kids-s-products', async (req, res) => {
+  try{
+      const client = await pool.connect();
+      const { rows } = await client.query("SELECT * FROM products WHERE category = 'K-shoes'");
+      res.json(rows);
+      client.release();
+  }catch(err){
+      res.status(500).send('Server error');
+      console.error('Error exucting query', err.stack);
+  }
+}); 
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);

@@ -11,9 +11,7 @@ async function populateProducts(endpoint) {
     try{
     const response = await fetch(endpoint);
     const products = await response.json();
-/*     const response1 = await fetch('/women-products');
-    const womenProducts = await response1.json();
-    const products = menProducts.concat(womenProducts); */
+
 
     container.innerHTML = '';
 
@@ -73,6 +71,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const kidsProductsLink = document.getElementById('kids-products');
     const menShoesProductsLink = document.getElementById('men-s-products');
     const womenShoesProductsLink = document.getElementById('women-s-products');
+    const kidsShoesProductsLink = document.getElementById('kids-s-products');
 
     if (menProductsLink) {
         menProductsLink.addEventListener('click', (e) => {
@@ -115,7 +114,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     } else {
         console.error("Women Shoes products link not found.");
     }
-});
+    if (kidsShoesProductsLink) {
+        kidsShoesProductsLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            populateProducts('/kids-s-products');
+        });
+    } else {
+        console.error("Women Shoes products link not found.");
+    }
+}); 
 
 
 
