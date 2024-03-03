@@ -3,22 +3,22 @@
 async function populateProducts(endpoint) {
     const container = document.querySelector('.container');
 
-    if(!container){
+    if (!container) {
         console.error('Container element not found');
         return;
     }
-    
-    try{
-    const response = await fetch(endpoint);
-    const products = await response.json();
+
+    try {
+        const response = await fetch(endpoint);
+        const products = await response.json();
 
 
-    container.innerHTML = '';
+        container.innerHTML = '';
 
 
-    products.forEach(product => {
-        const productsHtml = document.createElement('div');
-        productsHtml.innerHTML =  `
+        products.forEach(product => {
+            const productsHtml = document.createElement('div');
+            productsHtml.innerHTML = `
             <div class="product">
                 <div class="product-card">
                     <h2 class="name">${product.name}</h2>
@@ -30,7 +30,7 @@ async function populateProducts(endpoint) {
                     <div class="popup-card">
                         <a><i class="fas fa-times close-btn"></i></a>
                         <div class="product-img">
-                            <img src="${product.image}" alt="Image of ${product.name}">
+                            <img src="${product.image}" class="product-img" alt="Image of ${product.name}">
                         </div>
                         <div class="info">
                             <h2>Your fashion<br><span>Modern styles</span></h2>
@@ -43,29 +43,61 @@ async function populateProducts(endpoint) {
                 </div>
             </div>
         `;
-        container.appendChild(productsHtml);
-        
-       
-
-       if(products.image){
-            const img = new Image();
-            img.src =`data:image/jpeg;base64,${product.image.toString('base64')}`;
-            productsHtml.appendChild(img);
-        }
-        
-/*         if(container){
             container.appendChild(productsHtml);
-        }else{
-            console.error('Container element not found');
-        }  */
-    });
-}catch (error){
-    console.error('Failed to populate products:', error);
-}
+
+            if (products.image) {
+                const img = new Image();
+                img.src = `data:image/jpeg;base64,${product.image.toString('base64')}`;
+                productsHtml.appendChild(img);
+            } 
+
+            productsHtml.querySelector('.add-cart-btn').addEventListener('click', () => {
+                addProductToCart(product);
+            })
+
+
+
+            /*         if(container){
+                        container.appendChild(productsHtml);
+                    }else{
+                        console.error('Container element not found');
+                    }  */
+        });
+    } catch (error) {
+        console.error('Failed to populate products:', error);
+    }
     //console.log(container);
     addCartActions(container);
 }
+
+function addProductToCart(product) {
+    let cartItems = JSON.parse(localStorage.getItem('productsInCart')) || {};
+
+    if (cartItems[product.productid]) {
+        cartItems[product.productid].inCart += 1;
+    } else {
+        product.inCart = 1;
+        cartItems[product.productid] = product;
+    }
+
+    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+    updateCartTotal();
+}
+
+function updateCartTotal() {
+    let cartItems = JSON.parse(localStorage.getItem('productsInCart')) || {};
+    let total = Object.keys(cartItems).reduce((acc, key) => acc + cartItems[key].price * cartItems[key].inCart, 0);
+    
+    localStorage.setItem('totalCost', total.toString());
+    // Update the display of the total cost, you might need to adjust this selector based on your HTML structure
+    const totalCostElement = document.querySelector('.total-cost');
+    if (totalCostElement) {
+        totalCostElement.textContent = `£${total}`;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
+    getProducts();
     const menProductsLink = document.getElementById('men-products');
     const womenProductsLink = document.getElementById('women-products');
     const kidsProductsLink = document.getElementById('kids-products');
@@ -122,12 +154,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     } else {
         console.error("Women Shoes products link not found.");
     }
-}); 
+});
 
 
+const carts = document.querySelectorAll('.add-cart-btn');
+
+async function getProducts() {
+    try {
+        const response = await fetch('http://localhost:7000/products');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        //products = data.products;
+
+        populateProducts(data.products);
+        // console.log(data.products);
+        // console.log('Products:', products);
+    } catch (error) {
+        console.error('error fetching products:', error);
+    }
 
 
-               
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    getProducts();
+});
+
 
 
 
@@ -179,6 +233,10 @@ function onLoadCardsNumbers() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    onLoadCardsNumbers();
+});
+
 
 function cardsNumbers(product) {
     let productNumber = localStorage.getItem('cardsNumbers');
@@ -204,11 +262,11 @@ function setItems(product) {
     }
 
     let cartItems = localStorage.getItem('productsInCart');
-    
+
     cartItems = JSON.parse(cartItems);
-    
+
     const productTag = product.tag; // Get the tag property once
-    
+
     if (cartItems != null) {
         if (cartItems[productTag] == undefined) {
             cartItems = {
@@ -227,15 +285,22 @@ function setItems(product) {
             [productTag]: product
         };
     }
-    
+
     localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+
 }
 
 
 function totalCost() {
-    let cartItems = localStorage.getItem('productsInCart');
-    cartItems = JSON.parse(cartItems) || {};
-    let total = Object.values(cartItems).reduce((acc, item) => acc + (item.inCart * item.price), 0);
+    let cartItems = JSON.parse(localStorage.getItem('productsInCart')) || {};
+    //cartItems = JSON.parse(cartItems) || {};
+    //let total = Object.values(cartItems).reduce((acc, item) => acc + (item.inCart * item.price), 0);
+    let total = 0;
+    for (item in cartItems) {
+        total += cartItems[item].price * cartItems[item].inCart;
+    }
+
+
     localStorage.setItem('totalCost', total.toString());
     return total;
 }
@@ -243,7 +308,7 @@ function totalCost() {
 
 function displayCart() {
     let cartItems = JSON.parse(localStorage.getItem('productsInCart')) || {};
-    
+
     let productContainer = document.querySelector('.prods');
     let cartCost = 0; // Initialize cartCost to 0
 
@@ -256,13 +321,13 @@ function displayCart() {
             const closeBtnId = `close-btn-${item.id}`; // Update the close button's unique identifier
             const addBtnId = `add-btn-${item.id}`;
             const removeBtnId = `remove-btn-${item.id}`;
-            
+
             //const imageUrl = item.tag ? `/images/${item.tag}.jpg` : 'default-image.jpg';
             productContainer.innerHTML += `
                 <div class="prod">
                     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'>
                     <i class="gg-close-o ${closeBtnId}"></i>
-                    <img src="./images/${item.tag}.jpg">
+                    <img src="${item.image}">
                     <span>${item.name}</span>
                 </div>
                 <div class="price">£${item.price}</div>
