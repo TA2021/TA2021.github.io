@@ -16,7 +16,10 @@
     "nodemon": "^3.0.3",
     "type": "module",
     "content-type": "1.0.5",
-    "head": "1.0.0"
+    "head": "1.0.0",
+    "cors": "^2.8.5",
+    "nodemailer": "^6.9.12",
+    "pg": "^8.11.3"
   },
   "devDependencies": {},
   "description": ""

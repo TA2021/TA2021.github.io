@@ -193,7 +193,7 @@ header{
   z-index: 1;
   position: absolute;
   max-width: 370px;
-  max-height: 430px;
+  max-height: 400px;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);

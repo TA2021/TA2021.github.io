@@ -1,4 +1,102 @@
-exports.productList = [
+/* async function populateProducts(endpoint) {
+    const container = document.querySelector('.container');
+
+
+
+    try {
+        const response = await fetch(endpoint);
+        const products = await response.json();
+
+
+        container.innerHTML = '';
+
+
+        products.forEach(product => {
+            const productsHtml = document.createElement('div');
+            productsHtml.innerHTML = `
+            <div class="product">
+                <div class="product-card">
+                    <h2 class="name">${product.name}</h2>
+                    <span class="price">£${product.price}</span>
+                    <a class="popup-btn">Quick View</a>
+                    <img src="${product.image}" class="product-img" alt="Image of ${product.name}">
+                </div>
+                <div class="popup-view">
+                    <div class="popup-card">
+                        <a><i class="fas fa-times close-btn"></i></a>
+                        <div class="product-img">
+                            <img src="${product.image}" class="product-img" alt="Image of ${product.name}">
+                        </div>
+                        <div class="info">
+                            <h2>Your fashion<br><span>Modern styles</span></h2>
+                            <p>${product.description}</p>
+                            <span class="price">£${product.price}</span>
+                            <a href="#" class="add-cart-btn">Add to Cart</a>
+                            <a href="#" class="add-wish">Add to Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+            container.appendChild(productsHtml);
+
+            if (products.image) {
+                const img = new Image();
+                img.src = product.image;
+                productsHtml.querySelector('.product-img').appendChild(img);
+            } 
+
+
+                 if(container){
+                        container.appendChild(productsHtml);
+                    }else{
+                        console.error('Container element not found');
+                    }  
+        });
+    } catch (error) {
+        console.error('Failed to populate products:', error);
+    }
+    //console.log(container);
+    addCartActions(container);
+}
+
+async function getProducts(endpoint = 'http://localhost:7000/products') {
+    try {
+        const response = await fetch(endpoint);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        } 
+        const products = await response.json();
+        
+       // const data = await response.json();
+        //products = data.products;
+
+        populateProducts(products);
+        // console.log(data.products);
+        // console.log('Products:', products);
+    } catch (error) {
+        console.error('error fetching products:', error);
+    }
+
+
+}
+
+
+    const ProductsLink = getProducts('products');
+   // getProducts();
+
+    if (ProductsLink) {
+        ProductsLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            populateProducts('/products');
+        });
+    } else {
+        console.error("products link not found.");
+    } */
+
+/* exports.productList =
+[
    
     {
         name: 'Blue Shirt',
@@ -304,6 +402,5 @@ exports.productList = [
         Image:'' //'https://static-01.daraz.pk/p/5838623fb612626ae33c2f67d1b7179c.jpg'
     }
 
-];
-
-//module.exports =  productList;
+]; */
+ 
