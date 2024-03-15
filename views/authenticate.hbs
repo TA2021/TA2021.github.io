@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <title>Your Fashion</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/style.css">
+        
+       
+
+        <!--<script type="text/javascript" src="js/LocalLogin.js"></script>-->
+
+    </head>
+
+    <body class="responsive">
+      
+       
+        <header>
+          {{> common/navbar}}
+        </header>
+
+    <div class="authenticate-form">
+    
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="email">Email</span>
+            <input type="email" class="form-control" placeholder="example@example.com" aria-label="email" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="password">Password</span>
+            <input type="password" class="form-control"  aria-label="password" aria-describedby="basic-addon1">
+        </div>
+          <div class="input-group mb-3" id="c-pass-container">
+            <span class="input-group-text" id="cpassword">Confirm Password</span>
+            <input type="password" class="form-control"  aria-label="confirm-password" aria-describedby="basic-addon1">
+        </div>
+         <div class="input-group mb-3" id="c-username-container">
+            <span class="input-group-text" id="username">Username</span>
+            <input type="text" class="form-control"  aria-label="username" placeholder="optional" aria-describedby="basic-addon1">
+        </div>
+    <div>
+      <button onclick="handleClick()" type="button" id="btn" class="btn btn-secondary"></button>
+    </div>
+
+
+   
+
+     
+
+{{!-- 2. login with username password confirm password email , with notification to confirm account --}}
+
+
+    </body>
+         <script src="/authenticate.js"></script>
+    </html>

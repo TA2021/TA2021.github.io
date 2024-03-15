@@ -1,0 +1,78 @@
+<DOCTYPE! html>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/style.css">
+
+        <style>
+            .c {
+                display:flex;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+            }
+
+            .title {
+                font-size:24px;
+                margin-bottom:16px;
+            }
+        </style>
+    </head>
+
+  <body>
+    <div class="c">
+        <div class="title">
+            <p>
+                Input your email and the code you received to activate your account
+            </p>
+        </div>
+        <div>
+            <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="example@example.com" id="email" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
+        </div>
+         <div>
+            <div class="input-group mb-3">
+                <input type="text" id="code" class="form-control" placeholder="code" aria-label="code" aria-describedby="basic-addon1">
+            </div>
+        </div>
+
+           <button onclick="sendCode()" type="button" class="btn btn-secondary">Send code</button>
+
+    </div>
+  </body>
+    <script>
+        async function sendCode(){
+               const options = {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  code: document.getElementById('code').value,
+                  email: document.getElementById('email').value
+                }) 
+              };
+    
+            const url = `http://localhost:7000/activate-account`
+    
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                alert('Could not activate account')
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            alert('Account activated, you can log in now')
+            window.location.href = "/";
+        }
+    </script>
+    </html>

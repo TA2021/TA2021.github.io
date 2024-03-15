@@ -57,8 +57,8 @@ async function getProducts() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        const copied = Array(20).fill(data[0])
-        populateProducts(copied);
+        //const copied = Array(20).fill(data[0])
+        populateProducts(data);
     } catch (error) {
         console.error('error fetching products:', error);
     }
