@@ -8,9 +8,10 @@ body, h1, h2, p {
 }
 
 /* Basic page styles */
-body {
+.responsive {
     font-family: Arial, sans-serif;
-    background-image:linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
+    background:linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));
+
 }
 
 .your-fashion-text-box {

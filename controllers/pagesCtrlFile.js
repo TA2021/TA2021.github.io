@@ -29,3 +29,13 @@ exports.womenSCtrlFunction = (req, res) => {
 exports.womenCtrlFunction = (req, res) => {
     res.render('women');
 }
+
+
+exports.authenticateCtrlFunction = (req, res) => {
+    res.render('authenticate');
+}
+
+exports.activateAccountCtrlFunction = (req, res) => {
+    res.render('activate');
+}
+
