@@ -78,6 +78,7 @@ Today 20/01/24 completed the payment functionality but still face a minor issue 
 04/03/2024 work stopped due to health issue, seeking medical help so the work could continue ASAP.
 10/03/2024 Start working on the project again, sorting the fetching issue by refactoring the Shopping basket file and deleting the files that is not wanted anymore such as products file.
 12/03/2024 created login/register system as well as creating STMP for the notification emails.
+21/03/2024 Footer has been implemented with some working functionalities, however the rest of the links will be activated on later phase of the project.
 
 ## Support
 For any question please contact me on zfac125@live.rhul.ac.uk 
