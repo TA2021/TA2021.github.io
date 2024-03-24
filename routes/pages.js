@@ -1,7 +1,7 @@
 const express = require('express');
 const { hCtrlFunction, cartCtrlFunction, kidsSCtrlFunction, 
     kidsCtrlFunction, menSCtrlFunction, menCtrlFunction, 
-    womenSCtrlFunction, womenCtrlFunction, authenticateCtrlFunction, activateAccountCtrlFunction } = require('../controllers/pagesCtrlFile');
+    womenSCtrlFunction, womenCtrlFunction, authenticateCtrlFunction, activateAccountCtrlFunction, checkouttCtrlFunction } = require('../controllers/pagesCtrlFile');
 
 const router = express.Router();
 
@@ -16,5 +16,6 @@ router.get('/women', womenCtrlFunction);
 router.get('/', hCtrlFunction);
 router.get('/authenticate', authenticateCtrlFunction);
 router.get('/activate-account', activateAccountCtrlFunction);
+router.get('/checkout', checkouttCtrlFunction);
 
 module.exports = router;

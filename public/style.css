@@ -163,6 +163,28 @@ header{
   margin-top: 50px;
 }
 
+/*-------------register form--------------*/
+.authenticate-form {
+  display:block;
+  justify-content: center;
+  padding: 240px 90px 24px 90px;
+  
+}
+
+.input-group{
+  width: 100%;
+  min-width: 300px;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 16px;
+  border: 0px;
+  outline: none;
+}
+
+.btn{
+  margin-left: 40px;
+}
+
 /*Styles for product card*/
 
 .product .product-card {

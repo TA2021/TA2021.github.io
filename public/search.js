@@ -1,6 +1,4 @@
-/* let products1 = [];
-
-const searchBar = document.getElementById('search-input');
+let products1 = [];
 
 
 
@@ -53,9 +51,7 @@ const loadProducts = async () => {
     }
 
     const data = await res.json();
-    console.log(data); // To check the structure of the fetched data
     products1 = Array.isArray(data) ? data : [];
-    console.log('Products after fetching:', products1);
     displayCarts(products1);
     initializeSearch();
   } catch (err) {
@@ -81,8 +77,3 @@ function initializeSearch() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  loadProducts();
-});
-
- */
