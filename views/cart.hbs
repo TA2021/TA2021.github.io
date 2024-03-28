@@ -16,7 +16,8 @@
         <style>
             .cart-container {
             margin: 2%;
-            border: 2px dashed #333;
+            box-shadow: 5px 5px 10px black;
+
             border-radius: 4%;
             padding: 2%;
           }
@@ -77,14 +78,9 @@
   <div class="checkout-container">
     <button class="btn btn-primary" onclick="handleProceedCheckout()">Proceed to Checkout</button>
   </div>
-        {{!-- <div id="buy-now">Buy Now</div> --}}
-        
 
-
-       {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js" integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-      {{!-- <script async src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()"></script> --}}
       <script src="/cart.js"></script>
 
     </body>
-      {{> common/footer}}
+    {{> common/footer}}
     </html>

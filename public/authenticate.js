@@ -83,10 +83,14 @@ async function handleClick(){
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const user = await response.json()
-        console.log(user)
+        const {user, products} = await response.json()
 
         localStorage.setItem("user", JSON.stringify(user))
+        let shoppingCardItems = JSON.parse(localStorage.getItem('shoppingCardItems')) || []
+        shoppingCardItems = shoppingCardItems.concat(products)
+
+        localStorage.setItem('shoppingCardItems', JSON.stringify(shoppingCardItems))
+
         window.location.href = "/"
     }
 }

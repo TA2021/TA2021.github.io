@@ -1,6 +1,22 @@
 let products1 = [];
 
+// const searchBar = document.getElementById('search-input');
 
+/* searchBar.addEventListener('input', (e) => {
+  const searchString = e.target.value.toLowerCase();
+
+  if (products1 && products1.length) {
+    const filteredProducts = products1.filter((product) => {
+      return (
+        product.name?.toLowerCase().includes(searchString) ||
+        product.price?.toString().toLowerCase().includes(searchString)
+      );
+    });
+    displayCarts(filteredProducts);
+  } else {
+    console.log('Products array is empty or undefined. Waiting for data to load.');
+  }
+}); */
 
 const displayCarts = (products) => {
   const container = document.querySelector('.container-');
@@ -76,4 +92,8 @@ function initializeSearch() {
     }
   });
 }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   loadProducts();
+// });
 

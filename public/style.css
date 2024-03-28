@@ -9,8 +9,8 @@ body, h1, h2, p {
 
 /* Basic page styles */
 .responsive {
-    font-family: Arial, sans-serif;
-    background:rgba(0, 0, 0, 0.3);
+  font-family: Arial, sans-serif;
+  background:rgba(0, 0, 0, 0.2);
 
 }
 
@@ -25,12 +25,13 @@ body, h1, h2, p {
 
 .shopname{
     margin: 0;
-    padding-left: 10px;
+    padding-left: 60px;
     color: #ffffff;;
-    font-size: 24px;
-    
+    font-size: 34px;
     text-decoration-line: none;
     letter-spacing: 1px;
+    text-shadow: 10px 5px 5px rgb(24, 23, 23);
+
 }
 header{
     
@@ -63,7 +64,7 @@ header{
 
 .navbar ul.navbar-nav li {
     margin-right: 60;
-    padding: 10px 20px 10px 40px;
+padding: 10px 20px 10px 40px;
 }
 
 .navbar ul.navbar-nav li a {
@@ -76,7 +77,7 @@ header{
 }
 /* Add an active class to highlight the current page */
 .actives {
-   
+    
     color: white;
     padding: 10px 20px;
     margin-right: 60;
@@ -161,28 +162,6 @@ header{
   height: 100vh;
   top: 200px;
   margin-top: 50px;
-}
-
-/*-------------register form--------------*/
-.authenticate-form {
-  display:block;
-  justify-content: center;
-  padding: 240px 90px 24px 90px;
-  
-}
-
-.input-group{
-  width: 100%;
-  min-width: 300px;
-  padding: 12px 24px;
-  border-radius: 24px;
-  font-size: 16px;
-  border: 0px;
-  outline: none;
-}
-
-.btn{
-  margin-left: 40px;
 }
 
 /*Styles for product card*/
@@ -457,14 +436,12 @@ header{
 
 @media only screen and (max-width:620px) {
     /* For mobile phones: */
-    .menu, .container, .login-button, .shopname, .previous-button, .next-button, .scene, .carousel, .carousel__cell, .footer, .containers, 
-    .carousel__cell:nth-child(1), .carousel__cell:nth-child(2), .carousel__cell:nth-child(3), .carousel__cell:nth-child(4), .carousel__cell:nth-child(5), .carousel__cell:nth-child(6), 
-    .carousel__cell:nth-child(7), .carousel__cell:nth-child(8), .carousel__cell:nth-child(9){
+    .menu, .container, .login-button, .shopname {
       width:100%;
     }
   }
   @media screen and (max-width:1250px){
-      .container ul li, .login-button, .footer, .containers{
+      .container ul li, .login-button{
           width:40%;
           margin-left: 40px;
            
@@ -478,6 +455,8 @@ header{
     width: 360px;
     height: 290px;
     margin: 40px auto;
+    cursor: pointer;
+    margin-top: -330px;
     perspective: 1000px;
     top: 200px;
   }
@@ -489,7 +468,6 @@ header{
     transform: translateZ(-588px);
     transform-style: preserve-3d;
     transition: transform 1s;
-    
   }
   
   .carousel__cell {
@@ -504,6 +482,8 @@ header{
     font-weight: bold;
     color: white;
     text-align: center;
+    box-shadow: 5px 5px 10px black;
+
   }
   
   .slides{
@@ -530,8 +510,10 @@ header{
     left: 5%;
     color: #000;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 50px;
     background-color: #f1efef;
+    box-shadow: 10px 5px 5px rgb(61, 60, 60);
+
   }
 
   .previous-button:hover{
@@ -544,21 +526,22 @@ header{
     right: 5%;
     color: #000;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 50px;
     background-color: #f1efef;
+    box-shadow: 10px 5px 5px rgb(61, 60, 60);
    }
 
    .next-button:hover{
     background-color: #5a5e5f;
   }
-/* footer style */
+/*********** footer style **************/
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .containers{
 	max-width: 1170px;
-	margin:auto;
-}
+  margin:auto;
+  }
 .row{
 	display: flex;
 	flex-wrap: wrap;
@@ -568,11 +551,11 @@ ul{
 }
 .footer{
 	background-color: rgba(0, 0, 0, 0.8);
-    padding: 50px 0;
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: -1000px;
+  padding: 50px 0;
+  position: absolute;
+  right: 0;
+  left: 0;
+ margin-top: 800px;
 }
 .footer-col{
    width: 25%;
@@ -588,8 +571,8 @@ ul{
 }
 .footer-col h4::before{
 	content: '';
-	position: absolute;
-	left:0;
+  position: absolute;
+  left:0;
 	bottom: -10px;
 	background-color: #e91e63;
 	height: 2px;
@@ -614,8 +597,8 @@ ul{
 	padding-left: 8px;
 }
 .footer-col .social-links a{
-	display: inline-block;
-	height: 40px;
+  display: inline-block;
+  height: 40px;
 	width: 40px;
 	background-color: rgba(255,255,255,0.2);
 	margin:0 10px 10px 0;
@@ -650,7 +633,7 @@ ul{
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 100px) {
-  .text {font-size: 8px} 
+  .text {font-size: 8px}
 }
 
 
@@ -762,13 +745,41 @@ ul{
   background-color: #00ff6a;
   color: #000;
   padding: 0 0 0 0px;
-  margin-bottom: 9px;
   text-decoration: none;
   justify-content: space-around;
   border-radius: 8px;
-  position:absolute;
   text-align: center;
-  right: 45%;
-  top: 120%;
-  
+  width:fit-content;
+}
+
+
+.authenticate-form {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top:400px;
+    margin-left: 30%;
+    max-width:800px;
+    margin: 400 auto 0 auto;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: white;
+}
+
+.car-con {
+  margin: 400px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.btn-con {
+  margin-top:50px;
+  display: flex;
+  width:100%;
+  justify-content: space-around;
 }

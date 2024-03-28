@@ -1,4 +1,4 @@
-async function populateProducts(products) {
+function populateProducts(products) {
     const container = document.querySelector('.container');
 
     try {
@@ -50,22 +50,6 @@ async function populateProducts(products) {
     addCartActions(products);
 }
 
-async function getProducts() {
-    try {
-        const response = await fetch(`http://localhost:7000/${location.pathname.split('/')[1]}-products`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        //const copied = Array(20).fill(data[0])
-        populateProducts(data);
-    } catch (error) {
-        console.error('error fetching products:', error);
-    }
-
-
-}
-
 
 function addCartActions(products) {
     
@@ -115,7 +99,7 @@ async function cardsNumbers(product) {
             },
             body: JSON.stringify({
                 userId: loggedInuser.id,
-                productId: product.id
+                productId: product.productid
             }) 
           };
 
@@ -140,6 +124,28 @@ function updateShoppingCart(product){
 
     localStorage.setItem('shoppingCardItems', JSON.stringify(shoppingCardItems))
     document.querySelector('.add-cart span').textContent = shoppingCardItems.length;
+}
+
+
+async function getProducts() {
+    const page = location.pathname.split('/')[1]
+    if (page==='cart') {
+
+
+        return;
+    }
+    try {
+        const response = await fetch(`http://localhost:7000/${page}-products`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        populateProducts(data);
+    } catch (error) {
+        console.error('error fetching products:', error);
+    }
+
+
 }
 
 

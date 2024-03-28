@@ -16,6 +16,5 @@ function checkComplete() {
     if (isComplete) {
         document.querySelector('.buy-now button').disabled = false;
         document.querySelector('.g-warning').innerText = "";
-    
     }
 }

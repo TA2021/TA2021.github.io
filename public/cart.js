@@ -2,6 +2,7 @@ document.querySelector('.search-bar').style.display = 'none';
 
 const table = document.querySelector('table')
 table.innerHTML =`
+
     <tr>
         <th>Product</th>
         <th>Image</th>
@@ -16,8 +17,8 @@ let shoppingCardItems = JSON.parse(localStorage.getItem('shoppingCardItems')) ||
 let idItemMap = {} 
 
 shoppingCardItems.forEach(item => {
-   if (!idItemMap[item.id]) idItemMap[item.id]= [];
-   idItemMap[item.id].push(item)
+   if (!idItemMap[item.productid]) idItemMap[item.productid]= [];
+   idItemMap[item.productid].push(item)
 })
 
 const uniqueEntries = []
@@ -33,11 +34,11 @@ uniqueEntries.forEach(item => {
     <td>${item.name}</td>
     <td><img src="${item.image}" height="70" width="70"/></td>
     <td>${item.price}</td>
-    <td>${idItemMap[item.id].length}</td>
-    <td>${idItemMap[item.id].length * item.price}</td>
+    <td>${idItemMap[item.productid].length}</td>
+    <td>${idItemMap[item.productid].length * item.price}</td>
 </tr>
     `
-    totalCost += idItemMap[item.id].length * item.price
+    totalCost += idItemMap[item.productid].length * item.price
 })
 
 table.innerHTML +=`

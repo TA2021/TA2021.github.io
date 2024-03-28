@@ -1,4 +1,3 @@
-//const response = require("koa/lib/response");
 
 
 /**
@@ -63,6 +62,14 @@ function createAndAddButton() {
     });
 
     document.getElementById('buy-now').appendChild(googlePayButton);
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+    if (!input.value.trim()) {
+        document.querySelector('.buy-now button').disabled= true;
+        document.querySelector('.g-warning').innerText = 'Complete all the fields above in order to be able to pay with google pay'
+    }
+})
+
 }
 
 /**
@@ -87,15 +94,79 @@ function onGooglePayButtonClicked() {
 
     googlePayClient.loadPaymentData(paymentDataRequest)
     .then(paymentData => processPaymentData(paymentData))
+    .then(()=>updateDetails())
     .catch(error => console.error('loadPaymentData error: ', error));
 }
 
-function processPaymentData(paymentData) {
-    fetch(orderEndpointURL, {
+async function processPaymentData(paymentData) {
+  
+    const usr = JSON.parse(localStorage.getItem('user'))
+    if(usr){
+        await fetch(`http://localhost:7000/users/${usr.id}/products`, {
+            method: 'DELETE', 
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+           
+        })
+    }
+    localStorage.removeItem('shoppingCardItems')
+    document.querySelector('.add-cart span').textContent = 0;
+
+    const inputs = document.querySelectorAll('input')
+
+    const valuesMap = {}
+    inputs.forEach((input,ind) => {
+        if (!ind) return
+        
+        valuesMap[input.getAttribute('name')] = input.value
+    })
+
+    await fetch(`http://localhost:7000/orders`, {
         method: 'POST', 
         headers: {
             'Content-Type' : 'application/json'
         },
-        body: paymentData
+       body: JSON.stringify({
+            totalCost:  localStorage.getItem('totalCost'),
+            userId: usr?.id,
+            date: new Date(),
+            ...valuesMap
+       })
     })
+    localStorage.setItem('totalCost', 0)
+}
+
+async function updateDetails(){
+    const lu = JSON.parse(localStorage.getItem('user'))
+    if (!lu) return;
+    const inputs = document.querySelectorAll('input')
+
+    const valuesMap = {}
+    inputs.forEach((input,ind) => {
+        if (!ind) return
+        
+        valuesMap[input.getAttribute('name')] = input.value
+    })
+
+    try {
+        const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                valuesMap
+            ) 
+          };
+
+        const url = `http://localhost:7000/users/${lu.id}/details`
+
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        } 
+    } catch (error){
+        console.log(error)
+    }
 }

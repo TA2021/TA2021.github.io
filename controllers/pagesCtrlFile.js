@@ -42,3 +42,5 @@ exports.activateAccountCtrlFunction = (req, res) => {
 exports.checkouttCtrlFunction = (req, res) => {
     res.render('checkout');
 }
+
+

@@ -16,7 +16,7 @@ const pool = new Pool({
   database: 'your-fashion-data'
 });
 
-const transport = nodemailer.createTransport({
+var transport = nodemailer.createTransport({
   host: "sandbox.smtp.mailtrap.io",
   port: 2525,
   auth: {
@@ -151,20 +151,6 @@ app.post('/shopping-cart', async (req, res) => {
     }
   }); 
 
-
-  app.get('/users/:userId/shoppingCart', async (req, res) => {
-    try{
-        const client = await pool.connect();
-        const { rows } = await client.query(`SELECT * FROM shopping_cart WHERE user_id = ${req.params.userId}`);
-        res.json(rows);
-        client.release();
-    }catch(err){
-        res.status(500).send('Server error');
-        console.error('Error exucting query', err.stack);
-    }
-  }); 
-
-
 app.post('/register', async (req, res) => {
     try{
         const client = await pool.connect();
@@ -173,7 +159,7 @@ app.post('/register', async (req, res) => {
         username = username || email.split('@')[0]
         const code = generateRandomSixDigitNumber()
         await client.query(`INSERT INTO users (email, username, password, code) VALUES ('${email}', '${username}', '${sha256Hash(password)}', '${code}');`);
-        await transporter.sendMail({
+        await transport.sendMail({
             from: '<fashion-store@style.com>',
             to: email,
             subject: "Confirm your account", 
@@ -217,9 +203,15 @@ app.post('/register', async (req, res) => {
         const client = await pool.connect();
         const { body:{ email, password } } = req;
         const { rows } = await client.query(`SELECT * from users WHERE "users"."password" = '${sha256Hash(password)}'
-        AND "users"."is_active" = true AND "users"."email" = '${email}'`);
+        AND "users"."is_active" = true AND "users"."email" = '${email}'
+        `);
+
         if (rows.length) {
-            res.json(rows[0]);
+          const { rows: products}  =  await client.query(`
+          SELECT p.* from shopping_cart sc left join products p on p.productid = sc.product_id
+          WHERE sc.user_id = ${rows[0].id};
+          `)
+            res.json({user:rows[0], products});
             client.release();
             return
         }
@@ -234,6 +226,73 @@ app.post('/register', async (req, res) => {
   }); 
 
 
+app.get('/products', async (req, res) => {
+    const { q, cat } = req.query
+    let andCondition = '';
+
+    if (cat) {
+      andCondition = ` AND category='${cat}'`
+    }
+    console.log(`SELECT * FROM products WHERE name ILIKE '%${q}%'${andCondition};`)
+    try{
+        const client = await pool.connect();
+        const { rows } = await client.query(`SELECT * FROM products WHERE name ILIKE '%${q}%'${andCondition};`);
+        res.json(rows);
+        client.release();
+    }catch(err){
+        res.status(500).send('Server error');
+        console.error('Error exucting query', err.stack);
+    }
+}); 
+
+app.post('/users/:id/details', async (req, res) => {
+  try{
+      const client = await pool.connect();
+      console.log(req.body)
+      await client.query(`UPDATE users set details='${JSON.stringify(req.body)}' WHERE "users"."id" = '${req.params.id}'`);
+      res.sendStatus(201);
+      client.release();
+  }catch(err){
+      res.status(500).send('Server error');
+      console.error('Error exucting query', err.stack);
+  }
+}); 
+
+
+
+app.delete('/users/:id/products', async (req, res) => {
+  try{
+      const client = await pool.connect();
+      await client.query(`Delete from shopping_cart where user_id = '${req.params.id}'`);
+      res.sendStatus(204);
+      client.release();
+  }catch(err){
+      res.status(500).send('Server error');
+      console.error('Error exucting query', err.stack);
+  }
+}); 
+
+
+
+app.post('/orders', async (req, res) => {
+  try{
+      const client = await pool.connect();
+      const code = generateRandomSixDigitNumber()
+      if (req.body.userId) {
+        await client.query(`INSERT INTO orders (user_id, details) VALUES ('${req.body.userId}', '${JSON.stringify(req.body)}');`);
+    
+      } else {
+        await client.query(`INSERT INTO orders (details) VALUES ('${JSON.stringify(req.body)}');`);
+    
+      }
+
+      res.sendStatus(201);
+      client.release();
+  }catch(err){
+      res.status(500).send('Server error');
+      console.error('Error exucting query', err.stack);
+  }
+}); 
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
