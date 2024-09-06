@@ -30,7 +30,7 @@ body {
     letter-spacing: 1px;
 }
 header{
-    /* background-image:linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3)); */
+    /* background-image:linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.3));. */
     background-size: cover;
     background-position: center;
     margin-bottom: -360px;
